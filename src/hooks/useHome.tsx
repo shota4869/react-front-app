@@ -11,8 +11,6 @@ export const useHome = () => {
         axios.get(LOGIN_API_BASE_URL,{withCredentials: true})
         .then((res) =>{
 
-            alert("成功")
- 
         })
         .catch((err) => {
 

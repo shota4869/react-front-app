@@ -1,5 +1,5 @@
 
-import { Setting } from "../components/pages/Setting";
+import { EditAmount } from "../components/pages/EditAmount";
 import { Usermanagement } from "../components/pages/Usermanagement";
 
 export const homeRoutes = [
@@ -9,6 +9,6 @@ export const homeRoutes = [
     },
     {
         path:"/setting",
-        children: <Setting />
+        children: <EditAmount />
     }
 ]

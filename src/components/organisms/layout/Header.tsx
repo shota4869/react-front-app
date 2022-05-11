@@ -17,8 +17,8 @@ export const Header: VFC = memo(() => {
     const navigate = useNavigate();
 
     const onClickHome = useCallback(() => navigate("/home"), [navigate]);
-    const onClickUsermanagement = useCallback(() => navigate("/home/user_management"), [navigate]);
-    const onClickSetting = useCallback(() => navigate("/home/setting"), [navigate]);
+    const onClickUsermanagement = useCallback(() => navigate("/home/transition"), [navigate]);
+    const onClickSetting = useCallback(() => navigate("/home/balance-of-payment-list"), [navigate]);
     const onClickLogout = useCallback(() => {
         logout(navigate)
     },[navigate]);
@@ -29,14 +29,14 @@ export const Header: VFC = memo(() => {
         <>
             <Flex as="nav" bg="teal.500" color="gray.50" align="center" justify="space-between" padding={{ base: 3, md: 5 }}>
                 <Flex align="center" as="a" mr={8} _hover={{ cursor: "pointer" }} onClick={onClickHome}>
-                    <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>健康管理アプリ</Heading>
+                    <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>貯金ちゃん</Heading>
                 </Flex>
                 <Flex align="center" fontSize="sm" flexGrow={2} display={{ base: "none", md: "flex" }}>
                     <Box pr={4}>
-                        <Link onClick={onClickUsermanagement}>トレーニング一覧</Link>
+                        <Link onClick={onClickUsermanagement}>年間貯金額</Link>
                     </Box>
                     <Box pr={4}>
-                        <Link onClick={onClickSetting}>設定</Link>
+                        <Link onClick={onClickSetting}>本日収支一覧</Link>
                     </Box>
                 </Flex>
                 <Flex>

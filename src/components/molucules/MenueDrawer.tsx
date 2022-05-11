@@ -18,8 +18,8 @@ export const MenueDrawer: VFC<Props> = memo((props) => {
                     <DrawerContent>
                         <DrawerBody p={0} bg="gray.100">
                             <Button w="100%" onClick={onClickHome}>TOP</Button>
-                            <Button w="100%" onClick={onClickUsermanagement}>ユーザ一覧</Button>
-                            <Button w="100%" onClick={onClickSetting}>設定</Button>
+                            <Button w="100%" onClick={onClickUsermanagement}>年間貯金額</Button>
+                            <Button w="100%" onClick={onClickSetting}>本日収支一覧</Button>
                         </DrawerBody>
                     </DrawerContent>
                 </DrawerOverlay>
