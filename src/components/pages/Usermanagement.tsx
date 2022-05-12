@@ -12,8 +12,6 @@ export const Usermanagement: VFC = memo(() => {
         <>
             <HeaderLayout />
             <MultiAxisCharts />
-
-            <p>貯金額推移図</p>
         </>
     )
 })

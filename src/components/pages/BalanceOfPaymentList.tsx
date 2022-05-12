@@ -1,5 +1,5 @@
 import { VFC, memo } from "react"
-import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Tfoot, Button, IconButton, Stack, Box } from "@chakra-ui/react"
+import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Tfoot, Button, IconButton, Stack, Box } from "@chakra-ui/react"
 import { HeaderLayout } from "../templete/HeaderLayout"
 import { AddIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
@@ -15,9 +15,6 @@ export const BalanceOfPaymentList: VFC = memo(() => {
     const onOpen = () => {
         navigate("../edit")
     }
-
-
-    const date = new Date();
 
     return (
         <>

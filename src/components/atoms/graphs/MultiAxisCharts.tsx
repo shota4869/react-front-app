@@ -7,7 +7,12 @@ export const MultiAxisCharts: React.FC<Props> = () => {
 
   const options: ApexOptions = {
     chart: {
-      height: 350
+      height: 350,
+      events: {
+        dataPointSelection: (event, chartContext, config) => { 
+            console.log(config.w.globals.categoryLabels[config.dataPointIndex])
+          }
+        }
     },
     colors: ["#318fb5", "#b0cac7", "#005086", "#f7d6bf", "#001244"],
     stroke: {
@@ -18,7 +23,7 @@ export const MultiAxisCharts: React.FC<Props> = () => {
     },
     dataLabels: {
       enabled: true,
-      enabledOnSeries: [0, 1, 2]
+      enabledOnSeries: [0, 1]
     },
     labels: [
       "5月",
@@ -33,9 +38,9 @@ export const MultiAxisCharts: React.FC<Props> = () => {
     },
     yaxis: [
       {
-        seriesName: "貯金額合計",
+        seriesName: "月貯金額",
         title: {
-          text: "貯金額合計"
+          text: "月貯金額"
         },
         labels: {
           formatter: (value: number) => {
@@ -44,14 +49,10 @@ export const MultiAxisCharts: React.FC<Props> = () => {
         }
       },
       {
-        seriesName: "総数", // スケール合わせるためにわざと総数にしている
-        show: false
-      },
-      {
-        seriesName: "月合計",
+        seriesName: "貯金額合計",
         opposite: true,
         title: {
-          text: "月合計"
+          text: "貯金額合計"
         },
         labels: {
           formatter: (value: number) => {
@@ -65,25 +66,19 @@ export const MultiAxisCharts: React.FC<Props> = () => {
       width: 128
     },
     tooltip: {
-      shared: false
+      shared: true
     }
   }
 
   const state = {
     series: [
       {
-        name: "総数",
+        name: "月貯金額",
         type: "column",
-        data: [4857, 7289, 8108, 7899, 11140, 13559]
+        data: [50000, 50000, 60000, 50000, 50000, 50000]
       },
       {
-        name: "hoge数",
-        type: "column",
-        data: [680, 1108, 1200, 1098, 967, 800]
-      },
-  
-      {
-        name: "hoge率",
+        name: "貯金額合計",
         type: "line",
         data: [900000, 1020000, 1400000, 1320000, 1350000, 1500000]
       }
