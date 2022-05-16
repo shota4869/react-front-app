@@ -55,7 +55,7 @@ export const RegistUser = memo(() => {
 
     return (
         <Flex align="center" justify="center" height="100vh">
-            <Box bg="white" w="sm" p={4} borderRadius="md" shadow="md">
+            <Box bg="white" w="sm" p={4} borderRadius="md" shadow="dark-lg">
                 <Heading as="h1" size="lg" textAlign="center">新規登録</Heading>
                 <Divider my={4} />
                 <Stack spacing={4} px={4} py={5}>

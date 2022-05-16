@@ -1,18 +1,33 @@
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { Props } from "framer-motion/types/types";
+import { useNavigate } from "react-router-dom";
 
 
 export const MultiAxisCharts: React.FC<Props> = () => {
+
+
+  const navigate = useNavigate();
+
+
 
   const options: ApexOptions = {
     chart: {
       height: 350,
       events: {
-        dataPointSelection: (event, chartContext, config) => { 
-            console.log(config.w.globals.categoryLabels[config.dataPointIndex])
-          }
+        dataPointSelection: (event:any, chartContext: any, config :any) => {
+          console.log(config.w.globals.categoryLabels[config.dataPointIndex])
+          console.log(event)
+          const yearMonth = config.w.globals.categoryLabels[config.dataPointIndex]
+          console.log({ state: { yearMonth1: yearMonth}})
+
+          const object = { state: { yearMonth1: yearMonth}}
+          
+          if (!object) return
+          navigate("/home/balance-of-payment-list", object)
+
         }
+      }
     },
     colors: ["#318fb5", "#b0cac7", "#005086", "#f7d6bf", "#001244"],
     stroke: {
@@ -26,12 +41,12 @@ export const MultiAxisCharts: React.FC<Props> = () => {
       enabledOnSeries: [0, 1]
     },
     labels: [
-      "5月",
-      "6月",
-      "7月",
-      "8月",
-      "9月",
-      "10月"
+      "202205",
+      "202206",
+      "202207",
+      "202208",
+      "202209",
+      "202210"
     ],
     xaxis: {
       type: "category"
@@ -84,7 +99,7 @@ export const MultiAxisCharts: React.FC<Props> = () => {
       }
     ],
     options
-  };  
+  };
 
   return (
     <ReactApexChart
