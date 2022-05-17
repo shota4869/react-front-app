@@ -18,7 +18,7 @@ export const Header: VFC = memo(() => {
 
     const onClickHome = useCallback(() => navigate("/home"), [navigate]);
     const onClickUsermanagement = useCallback(() => navigate("/home/transition"), [navigate]);
-    const onClickSetting = useCallback(() => navigate("/home/balance-of-payment-list"), [navigate]);
+    const onClickCalender = useCallback(() => navigate("/home/calender"), [navigate]);
     const onClickLogout = () => {
         logout(navigate)
     };
@@ -32,11 +32,11 @@ export const Header: VFC = memo(() => {
                     <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>貯金ちゃん</Heading>
                 </Flex>
                 <Flex align="center" fontSize="sm" flexGrow={2} display={{ base: "none", md: "flex" }}>
-                    <Box pr={4}>
+                    {/* <Box pr={4}>
                         <Link onClick={onClickUsermanagement}>貯金額推移図</Link>
-                    </Box>
+                    </Box> */}
                     <Box pr={4}>
-                        <Link onClick={onClickSetting}>収支一覧</Link>
+                        <Link onClick={onClickCalender}>カレンダー</Link>
                     </Box>
                 </Flex>
                 <Flex>
@@ -46,7 +46,7 @@ export const Header: VFC = memo(() => {
                 </Flex>
                 <MenueIconButton onOpen={onOpen} />
             </Flex>
-            <MenueDrawer isOpen={isOpen} onClose={onClose} onClickHome={onClickHome} onClickUsermanagement={onClickUsermanagement} onClickSetting={onClickSetting} />
+            <MenueDrawer isOpen={isOpen} onClose={onClose} onClickHome={onClickHome} onClickUsermanagement={onClickUsermanagement} onClickSetting={onClickCalender} />
         </>
     )
 })

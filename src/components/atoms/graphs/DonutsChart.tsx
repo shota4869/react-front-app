@@ -30,7 +30,7 @@ const options: ApexOptions = {
     legend: {
       position: "right",
       offsetY: 0,
-      height: 230
+      height: 200
     }
   }
 
@@ -39,7 +39,7 @@ export const DonutsChart: React.FC<Props> = () => {
     return (
         <Chart
             options={options}
-            height={400}
+            height={200}
             series={donutData}
             type="donut"
         />

@@ -27,7 +27,7 @@ export const RegistModal: VFC<Props> = (props) => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>収支登録</ModalHeader>
+                    <ModalHeader textAlign="center">支出入力</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                     <FormLabel>カテゴリー</FormLabel>
@@ -36,14 +36,15 @@ export const RegistModal: VFC<Props> = (props) => {
                         <Input placeholder="" value={amount} onChange={onChangeAmount} />
                         <FormLabel>年月日</FormLabel>
                         <Input placeholder="yyyymmdd" value={date} onChange={onChangePassword} />
-
+                        <FormLabel>備考</FormLabel>
+                        <Input placeholder="" value={date} onChange={onChangePassword} />
                     </ModalBody>
 
                     <ModalFooter>
                         <Button colorScheme='blue' mr={3} onClick={onClose}>
                             閉じる
                         </Button>
-                        <Button variant='ghost' onClick={onClickEvent}>登録</Button>
+                        <Button variant='ghost' onClick={onClickEvent}>保存</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

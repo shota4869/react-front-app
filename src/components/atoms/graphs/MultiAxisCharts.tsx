@@ -6,10 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export const MultiAxisCharts: React.FC<Props> = () => {
 
-
   const navigate = useNavigate();
-
-
 
   const options: ApexOptions = {
     chart: {
@@ -24,7 +21,7 @@ export const MultiAxisCharts: React.FC<Props> = () => {
           const object = { state: { yearMonth1: yearMonth}}
           
           if (!object) return
-          navigate("/home/balance-of-payment-list", object)
+          navigate("/home/balance-of-payment-list")
 
         }
       }
