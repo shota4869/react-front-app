@@ -2,13 +2,12 @@ import axios from "axios";
 import { useCallback } from "react";
 import { NavigateFunction } from "react-router-dom";
 
-const HOME_API_BASE_URL = "http://localhost:8080/api/home";
+const CALENDER_API_BASE_URL = "http://localhost:8080/api/home/calender";
 
-export const useHome = () => {
+export const useCalenderPage = () => {
+    const calender = useCallback((navigate:NavigateFunction) =>{
 
-    const home = useCallback((navigate:NavigateFunction) =>{
-
-        axios.get(HOME_API_BASE_URL,{withCredentials: true})
+        axios.get(CALENDER_API_BASE_URL,{withCredentials: true})
         .then((res) =>{
 
         })
@@ -21,5 +20,5 @@ export const useHome = () => {
 
     },[])
 
-    return { home };
+    return { calender }
 }

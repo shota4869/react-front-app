@@ -7,7 +7,7 @@ type Props = {
 }
 
 
-export const RegistModal: VFC<Props> = (props) => {
+export const EditModal: VFC<Props> = (props) => {
 
     const { isOpen, onClose } = props;
     const [amount, setAmount] = useState('');

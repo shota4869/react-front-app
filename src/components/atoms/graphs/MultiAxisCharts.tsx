@@ -11,20 +11,7 @@ export const MultiAxisCharts: React.FC<Props> = () => {
   const options: ApexOptions = {
     chart: {
       height: 350,
-      events: {
-        dataPointSelection: (event:any, chartContext: any, config :any) => {
-          console.log(config.w.globals.categoryLabels[config.dataPointIndex])
-          console.log(event)
-          const yearMonth = config.w.globals.categoryLabels[config.dataPointIndex]
-          console.log({ state: { yearMonth1: yearMonth}})
-
-          const object = { state: { yearMonth1: yearMonth}}
-          
-          if (!object) return
-          navigate("/home/balance-of-payment-list")
-
-        }
-      }
+      
     },
     colors: ["#318fb5", "#b0cac7", "#005086", "#f7d6bf", "#001244"],
     stroke: {
@@ -43,7 +30,12 @@ export const MultiAxisCharts: React.FC<Props> = () => {
       "202207",
       "202208",
       "202209",
-      "202210"
+      "202210",
+      "202206",
+      "202207",
+      "202208",
+      "202209",
+      "202210",
     ],
     xaxis: {
       type: "category"
@@ -87,12 +79,12 @@ export const MultiAxisCharts: React.FC<Props> = () => {
       {
         name: "月貯金額",
         type: "column",
-        data: [50000, 50000, 60000, 50000, 50000, 50000]
+        data: [50000, 50000, 60000, 50000, 50000, 50000,50000, 60000, 50000, 50000, 50000]
       },
       {
         name: "貯金額合計",
         type: "line",
-        data: [900000, 1020000, 1400000, 1320000, 1350000, 1500000]
+        data: [900000, 1020000, 1400000, 1320000, 1350000, 1500000,1020000, 1400000, 1320000, 1350000, 1500000]
       }
     ],
     options

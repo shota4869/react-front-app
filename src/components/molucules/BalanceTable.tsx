@@ -14,6 +14,8 @@ export const BalanceTable: VFC<Props> = (props) => {
     const onOpenModal = () => {
         onOpen();
     }
+    const date = new Date()
+
 
     return (
         <TableContainer>
@@ -30,7 +32,7 @@ export const BalanceTable: VFC<Props> = (props) => {
                 </Thead>
                 <Tbody>
                     <Tr>
-                        <Td>2022/05/13</Td>
+                        <Td>{date.toLocaleDateString()}</Td>
                         <Td>食事</Td>
                         <Td isNumeric>2568円</Td>
                         <Td >昼飯代</Td>
@@ -43,7 +45,7 @@ export const BalanceTable: VFC<Props> = (props) => {
 
                     </Tr>
                     <Tr>
-                        <Td>2022/05/13</Td>
+                        <Td>{date.toLocaleDateString()}</Td>
                         <Td>買い物</Td>
                         <Td isNumeric>4562円</Td>
                         <Td >洋服</Td>
@@ -55,7 +57,7 @@ export const BalanceTable: VFC<Props> = (props) => {
                         </Td>
                     </Tr>
                     <Tr>
-                        <Td>2022/05/13</Td>
+                        <Td>{date.toLocaleDateString()}</Td>
                         <Td>交通費</Td>
                         <Td isNumeric>800円</Td>
                         <Td >早稲田から鎌倉</Td>
