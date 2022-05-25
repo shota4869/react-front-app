@@ -2,10 +2,9 @@ import axios from 'axios'
 
 const LOGIN_API_BASE_URL = "http://localhost:8080/Login";
 
-class LoginService {
+class HomeService {
 
     postLogin(login:Object) {
-        console.log(axios.get(LOGIN_API_BASE_URL));
         return axios.post(LOGIN_API_BASE_URL,login);
     }
 
@@ -27,4 +26,4 @@ class LoginService {
 
 }
 
-export default new LoginService();
+export default new HomeService();

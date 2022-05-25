@@ -1,6 +1,5 @@
 import { VFC, memo, useEffect } from "react"
 import { Stack } from "@chakra-ui/react"
-import { HeaderLayout } from "../templete/HeaderLayout"
 import {  useNavigate } from "react-router-dom";
 
 import { Calender } from "../atoms/graphs/Calender"
