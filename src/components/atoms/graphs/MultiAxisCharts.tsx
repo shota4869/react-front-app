@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 export const MultiAxisCharts: React.FC<Props> = () => {
 
-  const navigate = useNavigate();
 
   const options: ApexOptions = {
     chart: {
@@ -48,7 +47,7 @@ export const MultiAxisCharts: React.FC<Props> = () => {
         },
         labels: {
           formatter: (value: number) => {
-            return value.toLocaleString() + "円";
+            return value+ "円";
           }
         }
       },
@@ -60,7 +59,7 @@ export const MultiAxisCharts: React.FC<Props> = () => {
         },
         labels: {
           formatter: (value: number) => {
-            return value.toLocaleString() + "円";
+            return value + "円";
           }
         }
       }

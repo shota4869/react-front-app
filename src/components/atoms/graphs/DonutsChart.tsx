@@ -39,7 +39,7 @@ export const DonutsChart: React.FC<Props> = () => {
     return (
         <Chart
             options={options}
-            height={200}
+            height={150}
             series={donutData}
             type="donut"
         />

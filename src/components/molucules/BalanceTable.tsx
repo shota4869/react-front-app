@@ -1,6 +1,7 @@
 import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Tfoot, IconButton } from "@chakra-ui/react"
 import { AddIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { ReactNode, VFC } from "react";
+import "../styles/data-table.css"
 
 type Props = {
     onOpen: () => void,
@@ -18,9 +19,9 @@ export const BalanceTable: VFC<Props> = (props) => {
 
 
     return (
-        <TableContainer>
+        <TableContainer overflowY="auto" maxHeight="500px">
             <Table>
-                <Thead bgColor="telegram.300" >
+                <Thead bgColor="telegram.300" className="thead_fix" >
                     <Tr>
                         <Th fontSize="mg" color="gray.50" pr={5}>日付</Th>
                         <Th fontSize="mg" color="gray.50" pr={5}>カテゴリー</Th>
@@ -49,6 +50,90 @@ export const BalanceTable: VFC<Props> = (props) => {
                         <Td>買い物</Td>
                         <Td isNumeric>4562円</Td>
                         <Td >洋服</Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                    </Tr>
+                    <Tr>
+                        <Td>{date.toLocaleDateString()}</Td>
+                        <Td>交通費</Td>
+                        <Td isNumeric>800円</Td>
+                        <Td >早稲田から鎌倉</Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                    </Tr>
+                    <Tr>
+                        <Td>{date.toLocaleDateString()}</Td>
+                        <Td>交通費</Td>
+                        <Td isNumeric>800円</Td>
+                        <Td >早稲田から鎌倉</Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                    </Tr>
+                    <Tr>
+                        <Td>{date.toLocaleDateString()}</Td>
+                        <Td>交通費</Td>
+                        <Td isNumeric>800円</Td>
+                        <Td >早稲田から鎌倉</Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                    </Tr>
+                    <Tr>
+                        <Td>{date.toLocaleDateString()}</Td>
+                        <Td>交通費</Td>
+                        <Td isNumeric>800円</Td>
+                        <Td >早稲田から鎌倉</Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                    </Tr>
+                    <Tr>
+                        <Td>{date.toLocaleDateString()}</Td>
+                        <Td>交通費</Td>
+                        <Td isNumeric>800円</Td>
+                        <Td >早稲田から鎌倉</Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                    </Tr>
+                    <Tr>
+                        <Td>{date.toLocaleDateString()}</Td>
+                        <Td>交通費</Td>
+                        <Td isNumeric>800円</Td>
+                        <Td >早稲田から鎌倉</Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                        <Td >
+                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                        </Td>
+                    </Tr>
+                    <Tr>
+                        <Td>{date.toLocaleDateString()}</Td>
+                        <Td>交通費</Td>
+                        <Td isNumeric>800円</Td>
+                        <Td >早稲田から鎌倉</Td>
                         <Td >
                             <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
                         </Td>

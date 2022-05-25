@@ -14,8 +14,22 @@ export const useRegistUser = () => {
             
             navigate("/login")
         })
-        .catch((err) => {
-            alert(err)
+        .catch((error) => {
+            console.log(error)
+            if (error.response) {
+                // このリクエストはステータスコードとともに作成されます
+                // 2xx系以外の時にエラーが発生します
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+              } else if (error.request) {
+                // このリクエストはレスポンスが返ってこない時に作成されます。
+                // `error.request`はXMLHttpRequest のインスタンスです。
+                console.log(error.request);
+              } else {
+                //それ以外で何か以上が起こった時
+                console.log('Error', error.message);
+              }
         });
 
     },[])

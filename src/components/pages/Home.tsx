@@ -4,13 +4,15 @@ import { useHome } from "../../hooks/useHome"
 import { Heading, Stack } from "@chakra-ui/react"
 
 
-import { HeaderLayout } from "../templete/HeaderLayout"
 import { RegistFormTab } from "../organisms/layout/RegistFormTab"
+import { Header } from "../organisms/layout/Header"
+
+
 
 export const Home: VFC = memo(() => {
 
 
-    const { home } = useHome();
+    const { home, user } = useHome();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -21,8 +23,8 @@ export const Home: VFC = memo(() => {
 
     return (
         <>
-            <HeaderLayout />
-            <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">貯金額:1,500,000円</Heading>
+            <Header />
+            <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">{user}様の貯金額:1,500,000円</Heading>
             <Stack spacing={4} px={4} py={5}>
                 <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>{date.toLocaleDateString()}</Heading>
                 <RegistFormTab />
