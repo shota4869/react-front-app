@@ -4,7 +4,6 @@ import { VFC, memo } from "react"
 import { MultiAxisCharts } from "../atoms/graphs/MultiAxisCharts"
 import { Header } from "../organisms/layout/Header"
 
-import { HeaderLayout } from "../templete/HeaderLayout"
 
 
 export const Usermanagement: VFC = memo(() => {

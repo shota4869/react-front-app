@@ -1,5 +1,4 @@
-import { AddIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
-import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Tfoot, IconButton, Tabs, TabList, Tab, TabPanels, TabPanel, Box, Flex } from "@chakra-ui/react"
+import { Tabs, TabList, Tab, TabPanels, TabPanel,  Flex } from "@chakra-ui/react"
 import { VFC } from "react";
 import { DonutsChart } from "../../atoms/graphs/DonutsChart";
 import { BalanceTable } from "../../molucules/BalanceTable";

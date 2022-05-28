@@ -4,7 +4,6 @@ import { Login } from "../components/pages/Login";
 import { Home } from "../components/pages/Home";
 import { Usermanagement } from "../components/pages/Usermanagement";
 import { Page404 } from "../components/pages/Page404";
-import { Layout } from "../components/pages/Layout";
 import { RegistUser } from "../components/pages/RegistUser";
 import { CalenderPage } from "../components/pages/CalenderPage";
 import { BalanceOfPayment } from "../components/pages/BlanceOfPayment";

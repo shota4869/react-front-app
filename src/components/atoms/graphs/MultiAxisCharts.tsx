@@ -1,7 +1,6 @@
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { Props } from "framer-motion/types/types";
-import { useNavigate } from "react-router-dom";
 
 
 export const MultiAxisCharts: React.FC<Props> = () => {

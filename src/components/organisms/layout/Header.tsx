@@ -1,16 +1,13 @@
 import { memo, useCallback, VFC } from "react"
-import { Box, Button, Flex, Heading, IconButton, Link, Menu, MenuButton, MenuItem, MenuList, useDisclosure } from "@chakra-ui/react"
+import { Box,  Flex, Heading, IconButton, Link, Menu, MenuButton, MenuItem, MenuList, useDisclosure } from "@chakra-ui/react"
 
 import { MenueIconButton } from "../../atoms/button/MenueIconButton";
 import { MenueDrawer } from "../../molucules/MenueDrawer";
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "../../../hooks/useLogout";
-import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
+import {  HamburgerIcon } from "@chakra-ui/icons";
 
 
-type Props = {
-    user: string
-}
 
 export const Header: VFC = memo(() => {
 

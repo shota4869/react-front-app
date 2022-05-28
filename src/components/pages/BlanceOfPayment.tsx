@@ -1,7 +1,6 @@
 import {  Stack, useDisclosure } from "@chakra-ui/react"
 import { BalanceTableTab } from "../organisms/layout/BalanceTableTab"
 import { Header } from "../organisms/layout/Header"
-import { HeaderLayout } from "../templete/HeaderLayout"
 import { EditModal } from "./modals/EditModal"
 
 
