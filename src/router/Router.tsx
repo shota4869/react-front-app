@@ -7,6 +7,7 @@ import { Page404 } from "../components/pages/Page404";
 import { RegistUser } from "../components/pages/RegistUser";
 import { CalenderPage } from "../components/pages/CalenderPage";
 import { BalanceOfPayment } from "../components/pages/BlanceOfPayment";
+import { Settings } from "../components/pages/Settings";
 
 export const Router: VFC = memo(() => {
 
@@ -18,6 +19,7 @@ export const Router: VFC = memo(() => {
             <Route path="calender" element={<CalenderPage />} />
             <Route path="balance-list" element={<BalanceOfPayment />} />
             <Route path="transition" element={<Usermanagement />} />
+            <Route path="settings" element={<Settings />} />
             <Route path="/*" element={<Page404 />} />
         </Routes>
     )

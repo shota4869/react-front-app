@@ -25,6 +25,8 @@ export const Header: VFC = memo(() => {
     const onClickLogout = () => {
         logout(navigate)
     };
+    const onClickSettings = useCallback(() => navigate("/settings"), [navigate]);
+
 
 
 
@@ -48,7 +50,7 @@ export const Header: VFC = memo(() => {
                         <MenuButton as={IconButton} fontSize="lg" bg="orange.300" _hover={{ bg: "orange.200" }} icon={<HamburgerIcon />} />
                         {/* </MenuButton> */}
                         <MenuList bg="black" >
-                            <MenuItem _hover={{ bg: "gray.400" }}>設定</MenuItem>
+                            <MenuItem _hover={{ bg: "gray.400" }} onClick={onClickSettings}>設定</MenuItem>
                             <MenuItem onClick={onClickLogout} _hover={{ bg: "gray.400" }}> ログアウト</MenuItem>
                         </MenuList>
                     </Menu>

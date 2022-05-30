@@ -16,9 +16,6 @@ export const useHome = () => {
     const [incomeCategory, setIncomeCategory] = useState([]);
     const [expenditureCategory, setExpenditureCategory] = useState([]);
 
-
-
-
     const home = useCallback((navigate: NavigateFunction) => {
 
         let obj: User ={id: 0,name: "", username: ""};
@@ -35,11 +32,8 @@ export const useHome = () => {
                 obj = userInfo;
             })
             .catch((err) => {
-
                 // //リダイレクト
                 navigate("/login")
-
-
             });
             if(obj!=undefined){
                 return obj;
