@@ -10,6 +10,7 @@ export const useCalenderPage = () => {
         axios.get(CALENDER_API_BASE_URL,{withCredentials: true})
         .then((res) =>{
 
+            console.log("calender")
         })
         .catch((err) => {
 

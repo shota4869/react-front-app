@@ -21,7 +21,7 @@ export const BalanceTableTab: VFC<Props> = (props) => {
                 <Tab>支出</Tab>
                 <Tab>収入</Tab>
             </TabList>
-            <TabPanels>
+            <TabPanels fontSize={{ base: "sm", md: "md" }} padding={{ base: 2, md: 3 }}>
                 <TabPanel>
                     <DonutsChart />
                     <BalanceTable onOpen={onOpen}>支出</BalanceTable>

@@ -20,11 +20,11 @@ export const RegistFormTab: VFC <Props> = (props) => {
             <TabPanels>
                 <TabPanel>
                     <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">支出入力</Heading>
-                    <RegistForm categoryArry={expenditureArry} userId={userId} balanceFlg={0}/>
+                    <RegistForm categoryArry={expenditureArry} userId={userId} balanceFlg={1}/>
                 </TabPanel>
                 <TabPanel>
                     <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">収入入力</Heading>
-                    <RegistForm categoryArry={incomeArry} userId={userId} balanceFlg={1}/>
+                    <RegistForm categoryArry={incomeArry} userId={userId} balanceFlg={0}/>
                 </TabPanel>
             </TabPanels>
         </Tabs>

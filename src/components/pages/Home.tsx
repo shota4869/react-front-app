@@ -11,32 +11,21 @@ import { Header } from "../organisms/layout/Header"
 
 export const Home: VFC = memo(() => {
 
-
-    const { home, user, incomeCategory, expenditureCategory } = useHome();
-    const navigate = useNavigate();
-
-
-    const [id, setId] = useState<Number>(0);
-    const [name, setName] = useState('');
-
-
+    
+    const { user, incomeCategory, expenditureCategory, saveAmount,init } = useHome();
+    const [amount ,setAmount] = useState([]);
     useEffect(() => {
-        home(navigate);
-        if(user!=null){
-            setName(user.name)
-        }
-        
-    },[])
-
+        init();
+    }, [])
     const date = new Date()
 
     return (
         <>
             <Header />
-            <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">{name}様の貯金額:1,500,000円</Heading>
+            <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">{ user && user.name }様の貯金額:{saveAmount.toLocaleString()}円</Heading>
             <Stack spacing={4} px={4} py={5}>
                 <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>{date.toLocaleDateString()}</Heading>
-                <RegistFormTab incomeArry={incomeCategory} expenditureArry={expenditureCategory} userId={id}/>
+                <RegistFormTab incomeArry={incomeCategory} expenditureArry={expenditureCategory} userId={ user == null ? 0 : Number(user.id) } />
             </Stack>
             <Outlet />
         </>

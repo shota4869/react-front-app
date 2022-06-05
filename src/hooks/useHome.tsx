@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useCallback, useState } from "react";
-import { NavigateFunction } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const HOME_API_BASE_URL = "http://localhost:8080/api/home";
 
@@ -12,35 +12,35 @@ type User = {
 }
 export const useHome = () => {
 
+
+    const navigate = useNavigate();
     const [user, setUser] = useState<User | null>(null);
     const [incomeCategory, setIncomeCategory] = useState([]);
     const [expenditureCategory, setExpenditureCategory] = useState([]);
+    const [saveAmount, setSaveAmount] = useState([]);
 
-    const home = useCallback((navigate: NavigateFunction) => {
 
-        let obj: User ={id: 0,name: "", username: ""};
+
+    const init = useCallback(() => {
         axios.get(HOME_API_BASE_URL, { withCredentials: true })
-            .then((res) => {
-                //useStateに設定して呼び出し元に返すのは難しい？
-                //オブジェクトに詰め直して返すのも難しそう？
-                const userInfo:User = { id: res.data.userDetails.id, name: res.data.userDetails.name, username: res.data.userDetails.username }
-                const userIncomeCategory =res.data.incomeCategory
-                const userExpenditure = res.data.expenditureCategory
-                setUser({ id: res.data.userDetails.id, name: res.data.userDetails.name, username: res.data.userDetails.username });
+            .then(res => {
+                const { id, name, username } = res.data.userDetails
+                const aquiredUser: User = {
+                    id: id
+                    , name: name
+                    , username: username
+                }
+                setUser(aquiredUser)
                 setIncomeCategory(res.data.incomeCategory)
                 setExpenditureCategory(res.data.expenditureCategory)
-                obj = userInfo;
+                setSaveAmount(res.data.saveAmount)
+                console.log("hi")
+
             })
-            .catch((err) => {
-                // //リダイレクト
+            .catch(err => {
                 navigate("/login")
-            });
-            if(obj!=undefined){
-                return obj;
+            })
+    },[])
 
-            }
-
-    }, [])
-
-    return { home, user, incomeCategory, expenditureCategory };
+    return { user, incomeCategory, expenditureCategory, saveAmount ,init}
 }
