@@ -1,22 +1,25 @@
 import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Tfoot, IconButton } from "@chakra-ui/react"
 import { AddIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
-import { ReactNode, VFC } from "react";
+import { memo, ReactNode,  VFC } from "react";
 import "../styles/data-table.css"
 
 type Props = {
     onOpen: () => void,
+    balanceList: never[],
     children: ReactNode
 }
 
-export const BalanceTable: VFC<Props> = (props) => {
+export const BalanceTable: VFC<Props> = memo((props) => {
 
-    const { onOpen, children } = props;
+    const { onOpen, balanceList , children } = props;
 
     const onOpenModal = () => {
         onOpen();
     }
-    const date = new Date()
 
+    const onClickRow = () => {
+        alert("hi")
+    }
 
     return (
         <TableContainer overflowY="auto" maxHeight="500px">
@@ -32,24 +35,12 @@ export const BalanceTable: VFC<Props> = (props) => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    <Tr>
-                        <Td>{date.toLocaleDateString()}</Td>
-                        <Td>食事</Td>
-                        <Td isNumeric>2568円</Td>
-                        <Td >昼飯代</Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-
-                    </Tr>
-                    <Tr>
-                        <Td>{date.toLocaleDateString()}</Td>
-                        <Td>買い物</Td>
-                        <Td isNumeric>4562円</Td>
-                        <Td >洋服</Td>
+                {balanceList.map((balance) =>
+                    <Tr onClick={onClickRow} _hover={{ bg: "orange.100" }} key={balance['id']}>
+                        <Td>{balance['date']}</Td>
+                        <Td>{balance['categoryName']}</Td>
+                        <Td isNumeric>{balance['amount']}円</Td>
+                        <Td >{balance['remarks']}</Td>
                         <Td >
                             <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
                         </Td>
@@ -57,102 +48,7 @@ export const BalanceTable: VFC<Props> = (props) => {
                             <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
                         </Td>
                     </Tr>
-                    <Tr>
-                        <Td>{date.toLocaleDateString()}</Td>
-                        <Td>交通費</Td>
-                        <Td isNumeric>800円</Td>
-                        <Td >早稲田から鎌倉</Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                    </Tr>
-                    <Tr>
-                        <Td>{date.toLocaleDateString()}</Td>
-                        <Td>交通費</Td>
-                        <Td isNumeric>800円</Td>
-                        <Td >早稲田から鎌倉</Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                    </Tr>
-                    <Tr>
-                        <Td>{date.toLocaleDateString()}</Td>
-                        <Td>交通費</Td>
-                        <Td isNumeric>800円</Td>
-                        <Td >早稲田から鎌倉</Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                    </Tr>
-                    <Tr>
-                        <Td>{date.toLocaleDateString()}</Td>
-                        <Td>交通費</Td>
-                        <Td isNumeric>800円</Td>
-                        <Td >早稲田から鎌倉</Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                    </Tr>
-                    <Tr>
-                        <Td>{date.toLocaleDateString()}</Td>
-                        <Td>交通費</Td>
-                        <Td isNumeric>800円</Td>
-                        <Td >早稲田から鎌倉</Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                    </Tr>
-                    <Tr>
-                        <Td>{date.toLocaleDateString()}</Td>
-                        <Td>交通費</Td>
-                        <Td isNumeric>800円</Td>
-                        <Td >早稲田から鎌倉</Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                    </Tr>
-                    <Tr>
-                        <Td>{date.toLocaleDateString()}</Td>
-                        <Td>交通費</Td>
-                        <Td isNumeric>800円</Td>
-                        <Td >早稲田から鎌倉</Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                    </Tr>
-                    <Tr>
-                        <Td>{date.toLocaleDateString()}</Td>
-                        <Td>交通費</Td>
-                        <Td isNumeric>800円</Td>
-                        <Td >早稲田から鎌倉</Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                        <Td >
-                            <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
-                        </Td>
-                    </Tr>
+                    )}
                 </Tbody>
                 <Tfoot>
                     <Tr>
@@ -164,4 +60,4 @@ export const BalanceTable: VFC<Props> = (props) => {
             </Table>
         </TableContainer >
     )
-}
+})

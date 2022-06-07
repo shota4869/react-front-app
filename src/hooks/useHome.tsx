@@ -24,13 +24,7 @@ export const useHome = () => {
     const init = useCallback(() => {
         axios.get(HOME_API_BASE_URL, { withCredentials: true })
             .then(res => {
-                const { id, name, username } = res.data.userDetails
-                const aquiredUser: User = {
-                    id: id
-                    , name: name
-                    , username: username
-                }
-                setUser(aquiredUser)
+                setUser(res.data.userDetails)
                 setIncomeCategory(res.data.incomeCategory)
                 setExpenditureCategory(res.data.expenditureCategory)
                 setSaveAmount(res.data.saveAmount)

@@ -13,7 +13,7 @@ export const CalenderPage: VFC = memo(() => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        calender(navigate);
+        calender();
     }, [])
 
     return (

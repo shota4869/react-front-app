@@ -10,7 +10,7 @@ export const Calender = () => {
 
     const onCLickDate = (arg: DateClickArg) => { // bind with an arrow function
         // alert(arg.dateStr)
-        navigate("/balance-list",{state: {date1: arg.dateStr as string}, replace: false })
+        navigate("/balance-list",{state: {date: arg.dateStr as string}, replace: false })
     }
 
     return (

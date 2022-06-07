@@ -6,7 +6,7 @@ import { Usermanagement } from "../components/pages/Usermanagement";
 import { Page404 } from "../components/pages/Page404";
 import { RegistUser } from "../components/pages/RegistUser";
 import { CalenderPage } from "../components/pages/CalenderPage";
-import { BalanceOfPayment } from "../components/pages/BlanceOfPayment";
+import { BalanceOfPayment } from "../components/pages/BalanceOfPayment";
 import { Settings } from "../components/pages/Settings";
 
 export const Router: VFC = memo(() => {

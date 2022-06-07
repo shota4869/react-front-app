@@ -1,15 +1,17 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel,  Flex } from "@chakra-ui/react"
-import { VFC } from "react";
+import { memo, VFC } from "react";
 import { DonutsChart } from "../../atoms/graphs/DonutsChart";
 import { BalanceTable } from "../../molucules/BalanceTable";
 
 type Props = {
-    onOpen: () => void
+    onOpen: () => void,
+    incomeList: never[],
+    expenditureList: never[]
 }
 
-export const BalanceTableTab: VFC<Props> = (props) => {
+export const BalanceTableTab: VFC<Props> = memo((props) => {
 
-    const { onOpen } = props;
+    const { onOpen ,incomeList ,expenditureList} = props;
 
     const onOpenModal = () => {
         onOpen();
@@ -24,15 +26,15 @@ export const BalanceTableTab: VFC<Props> = (props) => {
             <TabPanels fontSize={{ base: "sm", md: "md" }} padding={{ base: 2, md: 3 }}>
                 <TabPanel>
                     <DonutsChart />
-                    <BalanceTable onOpen={onOpen}>支出</BalanceTable>
+                    <BalanceTable onOpen={onOpen} balanceList={expenditureList}>支出</BalanceTable>
                 </TabPanel>
                 <TabPanel>
                     <Flex align="center" justify="space-between">
                         <DonutsChart />
                     </Flex>
-                    <BalanceTable onOpen={onOpen}>収入</BalanceTable>
+                    <BalanceTable onOpen={onOpen} balanceList={incomeList}>収入</BalanceTable>
                 </TabPanel>
             </TabPanels>
         </Tabs>
     )
-}
+})
