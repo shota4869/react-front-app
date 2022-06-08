@@ -15,7 +15,7 @@ export const BalanceOfPayment = memo(() => {
     const location = useLocation();
 
     const { date }  = location.state as State;
-    const slashDate = date.replace("-","/").replace("-","/");
+    // const slashDate = date.replace("-","/").replace("-","/");
     const dateYyyyMm = date.replace("-","").replace("-","");
 
     
@@ -32,7 +32,7 @@ export const BalanceOfPayment = memo(() => {
 
     useEffect(() => {
         balanceList()
-    },[])
+    },[balanceList])
 
     return (
         <>

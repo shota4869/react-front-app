@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useCallback } from "react";
-const HOME_API_BASE_URL = "http://localhost:8080/api/home/save";
+const HOME_API_BASE_URL = "http://localhost:8080/api/setting";
 
 
 
-export const useSaveBalance = () => {
+export const useSaveSetting = () => {
 
     const saveAction = useCallback((form: Object) => {
 

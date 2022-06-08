@@ -1,29 +1,43 @@
-import { Box, Button, Container, Flex, FormControl, FormLabel, Input, Stack, Switch } from "@chakra-ui/react"
-import { ChangeEvent, FocusEvent, useState } from "react";
+import { Box, Container, Flex,  FormLabel, Input, Stack, Switch } from "@chakra-ui/react"
+import { ChangeEvent,  memo,  useEffect,  useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import { Header } from "../organisms/layout/Header";
 import ja from "date-fns/locale/ja";
 
+import { SaveButton } from "../atoms/button/SaveButton" 
+import { useSetting } from "../../hooks/useSetting";
+
+import { useSaveSetting } from "../../hooks/useSaveSetting";
 
 
-export const Settings = () => {
 
+export const Setting = memo(() => {
+
+    //Form
+    const [firtsAmount, setFirstAmount] = useState('');
     const [goalAmount, setGoalAmount] = useState('');
-    const [initAmount, setInitAmount] = useState('');
     const [accessToken, setAccessToken] = useState('');
     const [lineFlg, setLineFlg] = useState(false);
+    const [goalDate, setGoalDate] = useState<Date | null>();
 
-
-    const today = new Date();
-
-
-    const [date, setDate] = useState<Date | null>();
+    const requestForm = {"firstAmount":firtsAmount,"goalAmount": goalAmount,"goalDate": goalDate,"lineFlg": lineFlg, "accessToken": accessToken} 
+    const { init } = useSetting();
+    const { saveAction } = useSaveSetting(); 
 
 
     const onChangeAmount = (e: ChangeEvent<HTMLInputElement>) => setGoalAmount(e.target.value);
-    const onChangeInitAmount = (e: ChangeEvent<HTMLInputElement>) => setInitAmount(e.target.value);
+    const onChangeInitAmount = (e: ChangeEvent<HTMLInputElement>) => setFirstAmount(e.target.value);
     const onChangeAccessToken = (e: ChangeEvent<HTMLInputElement>) => setAccessToken(e.target.value);
     const onChangeLineFlg = () => setLineFlg(!lineFlg);
+
+    const onClickSetting = () => {
+        saveAction(requestForm)
+    } 
+
+    useEffect(() =>{
+        init();
+
+    },[init])
 
     return (
         <>
@@ -33,21 +47,20 @@ export const Settings = () => {
                     <FormLabel htmlFor="amount">初期残高</FormLabel>
                     <Input id="amount" placeholder="" value={goalAmount} onChange={onChangeInitAmount} type="number" />
                     <FormLabel htmlFor="goalamount">目標貯金額</FormLabel>
-                    <Input id="goalamount" placeholder="" value={initAmount} onChange={onChangeAmount} type="number" />
+                    <Input id="goalamount" placeholder="" value={firtsAmount} onChange={onChangeAmount} type="number" />
                     <FormLabel htmlFor="date">目標貯金日付</FormLabel>
-                    <ReactDatePicker id="date" dateFormat="yyyy/MM/dd" autoComplete="off" selected={date} onChange={selectedDate => { setDate(selectedDate || null) }} locale={ja} />
+                    <ReactDatePicker id="date" dateFormat="yyyy/MM/dd" autoComplete="off" selected={goalDate} onChange={selectedDate => { setGoalDate(selectedDate || null) }} locale={ja} />
                     <FormLabel htmlFor='email-alerts' mb='0'>ライン連携有無</FormLabel>
                     <Switch id='email-alerts' isChecked={lineFlg} onChange={onChangeLineFlg} />
                     <FormLabel htmlFor="token">アクセストークン</FormLabel>
                     <Input id="token" placeholder="" value={accessToken} onChange={onChangeAccessToken} disabled={!lineFlg} />
                     <Flex justify="center" >
                         <Box py={4}>
-                            <Button bg="teal.400" color="white" _hover={{ opacity: 0.8 }}>設定</Button>
+                            <SaveButton onClick={onClickSetting}>設定</SaveButton>
                         </Box>
                     </Flex>
-
                 </Stack>
             </Container>
         </>
     )
-}
+})

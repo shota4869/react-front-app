@@ -13,9 +13,9 @@ export const BalanceTableTab: VFC<Props> = memo((props) => {
 
     const { onOpen ,incomeList ,expenditureList} = props;
 
-    const onOpenModal = () => {
-        onOpen();
-    }
+    // const onOpenModal = () => {
+    //     onOpen();
+    // }
 
     return (
         <Tabs isFitted isManual variant='enclosed'>

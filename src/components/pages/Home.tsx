@@ -1,5 +1,5 @@
-import { VFC, memo, useEffect, useState } from "react"
-import { Outlet, useNavigate } from "react-router-dom"
+import { VFC, memo, useEffect } from "react"
+import { Outlet } from "react-router-dom"
 import { useHome } from "../../hooks/useHome"
 import { Heading, Stack } from "@chakra-ui/react"
 
@@ -13,10 +13,9 @@ export const Home: VFC = memo(() => {
 
     
     const { user, incomeCategory, expenditureCategory, saveAmount,init } = useHome();
-    const [amount ,setAmount] = useState([]);
     useEffect(() => {
         init();
-    }, [])
+    }, [init])
     const date = new Date()
 
     return (

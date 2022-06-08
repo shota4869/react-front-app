@@ -6,7 +6,6 @@ import { MenueDrawer } from "../../molucules/MenueDrawer";
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "../../../hooks/useLogout";
 import {  HamburgerIcon } from "@chakra-ui/icons";
-import { registerLocale } from "react-datepicker";
 
 
 
@@ -26,7 +25,7 @@ export const Header: VFC = memo(() => {
     const onClickLogout = () => {
         logout(navigate)
     };
-    const onClickSettings = useCallback(() => navigate("/settings"), [navigate]);
+    const onClickSettings = useCallback(() => navigate("/setting"), [navigate]);
     // registerLocale("ja", ja);
 
 

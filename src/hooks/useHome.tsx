@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HOME_API_BASE_URL = "http://localhost:8080/api/home";
@@ -34,7 +34,7 @@ export const useHome = () => {
             .catch(err => {
                 navigate("/login")
             })
-    },[])
+    },[navigate])
 
     return { user, incomeCategory, expenditureCategory, saveAmount ,init}
 }

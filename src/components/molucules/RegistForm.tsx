@@ -7,8 +7,6 @@ import ja from "date-fns/locale/ja";
 import '../styles/date-picker.css';
 import { SaveButton } from "../atoms/button/SaveButton";
 import { useSaveBalance } from "../../hooks/useSaveBalance";
-import { useHome } from "../../hooks/useHome";
-
 type Props ={
     categoryArry: never[],
     userId: Number,
@@ -75,7 +73,7 @@ export const RegistForm: VFC<Props> = memo((props) => {
                 <Textarea placeholder="" value={remarks} onChange={handleInputChange} maxLength={500} />
                 <Flex justify="center" >
                     <Box py={4}>
-                        <SaveButton onClick={onClickSaveButton} />
+                        <SaveButton onClick={onClickSaveButton}>保存</SaveButton>
                     </Box>
                 </Flex>
             </Container>

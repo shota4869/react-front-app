@@ -20,8 +20,6 @@ export const useBalanceList = (requestJson: string) => {
             setIncomeList(res.data.incomeList);
             setExpenditureList(res.data.expenditureList);
             
-
-            console.log(res.data)
         })
         .catch((err) => {
 
@@ -30,7 +28,7 @@ export const useBalanceList = (requestJson: string) => {
 
         });
 
-    },[])
+    },[navigate,requestJson])
 
     return { balanceList ,incomeList ,expenditureList }
 }
