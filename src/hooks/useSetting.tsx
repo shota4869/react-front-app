@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 const HOME_API_BASE_URL = "http://localhost:8080/api/setting";
 
 
 
 export const useSetting = () => {
+    const navigate = useNavigate();
 
     const init = useCallback(() => {
 
@@ -13,8 +15,8 @@ export const useSetting = () => {
                 console.log(res.data)
             })
             .catch((err) => {
-                alert("保存に失敗しました。")
-
+            
+                navigate("/login")
             });
 
     }, [])
