@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useCallback } from "react";
-const HOME_API_BASE_URL = "http://localhost:8080/api/setting";
+const HOME_API_BASE_URL = "http://localhost:8080/api/setting/amount";
 
 
 
-export const useSaveSetting = () => {
+export const useSaveAmountSetting = () => {
 
     const saveAction = useCallback((form: Object) => {
 
-        axios.post(HOME_API_BASE_URL, form, { withCredentials: true ,headers: {'Content-Type': 'application/json'}})
+        axios.post(HOME_API_BASE_URL , form, { withCredentials: true ,headers: {'Content-Type': 'application/json'}})
             .then((res) => {
                 console.log(res.data)
             })

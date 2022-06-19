@@ -15,15 +15,13 @@ export const BalanceOfPayment = memo(() => {
     const location = useLocation();
 
     const { date }  = location.state as State;
-    // const slashDate = date.replace("-","/").replace("-","/");
-    const dateYyyyMm = date.replace("-","").replace("-","");
+    const slashDate = date.replace("-","/").replace("-","/");
 
     
 
-    const requestJson = JSON.stringify({'date': dateYyyyMm})
+    const requestJson = JSON.stringify({'date': slashDate})
     const { balanceList ,incomeList ,expenditureList} = useBalanceList(requestJson);
 
-    console.log(date.replace("-","/").replace("-","/"))
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const onOpenModal = () => {

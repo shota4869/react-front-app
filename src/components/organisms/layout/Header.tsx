@@ -1,35 +1,23 @@
 import { memo, useCallback, VFC } from "react"
-import { Box,  Flex, Heading, IconButton, Link, Menu, MenuButton, MenuItem, MenuList, useDisclosure } from "@chakra-ui/react"
+import { Box, Flex, Heading, Link} from "@chakra-ui/react"
 
-import { MenueIconButton } from "../../atoms/button/MenueIconButton";
-import { MenueDrawer } from "../../molucules/MenueDrawer";
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "../../../hooks/useLogout";
-import {  HamburgerIcon } from "@chakra-ui/icons";
 
 
 
 export const Header: VFC = memo(() => {
-
-
-    // const { user } = props;
-    const { isOpen, onOpen, onClose } = useDisclosure();
 
     const { logout } = useLogout();
 
     const navigate = useNavigate();
 
     const onClickHome = useCallback(() => navigate("/home"), [navigate]);
-    const onClickUsermanagement = useCallback(() => navigate("/transition"), [navigate]);
+    const onClickUsermanagement = useCallback(() => navigate("/setting"), [navigate]);
     const onClickCalender = useCallback(() => navigate("/calender"), [navigate]);
     const onClickLogout = () => {
         logout(navigate)
     };
-    const onClickSettings = useCallback(() => navigate("/setting"), [navigate]);
-    // registerLocale("ja", ja);
-
-
-
 
 
     return (
@@ -44,22 +32,15 @@ export const Header: VFC = memo(() => {
                         <Link onClick={onClickCalender}>カレンダー</Link>
                     </Box>
                     <Box pr={4}>
-                        <Link onClick={onClickUsermanagement}>レポート</Link>
+                        <Link onClick={onClickUsermanagement}>設定</Link>
                     </Box>
                 </Flex>
                 <Flex display={{ base: "none", md: "flex" }}>
-                    <Menu closeOnSelect={false} autoSelect={false}>
-                        <MenuButton as={IconButton} fontSize="lg" bg="orange.300" _hover={{ bg: "orange.200" }} icon={<HamburgerIcon />} />
-                        {/* </MenuButton> */}
-                        <MenuList bg="black" >
-                            <MenuItem _hover={{ bg: "gray.400" }} onClick={onClickSettings}>設定</MenuItem>
-                            <MenuItem onClick={onClickLogout} _hover={{ bg: "gray.400" }}> ログアウト</MenuItem>
-                        </MenuList>
-                    </Menu>
+                    <Box pr={4}>
+                        <Link onClick={onClickLogout}>ログアウト</Link>
+                    </Box>
                 </Flex>
-                <MenueIconButton onOpen={onOpen} />
             </Flex>
-            <MenueDrawer isOpen={isOpen} onClose={onClose} onClickHome={onClickHome} onClickUsermanagement={onClickUsermanagement} onClickSetting={onClickCalender} />
         </>
     )
 })

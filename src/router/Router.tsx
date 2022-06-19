@@ -18,7 +18,6 @@ export const Router: VFC = memo(() => {
             <Route path="home" element={<Home />} />
             <Route path="calender" element={<CalenderPage />} />
             <Route path="balance-list" element={<BalanceOfPayment />} />
-            <Route path="transition" element={<Usermanagement />} />
             <Route path="setting" element={<Setting />} />
             <Route path="/*" element={<Page404 />} />
         </Routes>

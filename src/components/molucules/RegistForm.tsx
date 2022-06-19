@@ -49,10 +49,6 @@ export const RegistForm: VFC<Props> = memo((props) => {
             alert("金額を入力してください")
             return
         }
-        
-        console.log(saveForm)
-        
-
         saveAction(saveForm);
     }
 

@@ -29,9 +29,7 @@ export const BalanceTableTab: VFC<Props> = memo((props) => {
                     <BalanceTable onOpen={onOpen} balanceList={expenditureList}>支出</BalanceTable>
                 </TabPanel>
                 <TabPanel>
-                    <Flex align="center" justify="space-between">
                         <DonutsChart />
-                    </Flex>
                     <BalanceTable onOpen={onOpen} balanceList={incomeList}>収入</BalanceTable>
                 </TabPanel>
             </TabPanels>
