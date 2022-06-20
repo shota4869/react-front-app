@@ -16,11 +16,12 @@ export const BalanceOfPayment = memo(() => {
 
     const { date }  = location.state as State;
     const slashDate = date.replace("-","/").replace("-","/");
+    // const dateYyyyMm = date.replace("-","").replace("-","");
 
     
 
     const requestJson = JSON.stringify({'date': slashDate})
-    const { balanceList ,incomeList ,expenditureList} = useBalanceList(requestJson);
+    const { findBalanceList ,incomeList ,expenditureList} = useBalanceList();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -29,14 +30,14 @@ export const BalanceOfPayment = memo(() => {
     }
 
     useEffect(() => {
-        balanceList()
-    },[balanceList])
+        findBalanceList(requestJson)
+    },[findBalanceList])
 
     return (
         <>
             <Header />
             <Stack spacing={4} px={4} py={5}>
-                <BalanceTableTab onOpen={onOpenModal} incomeList={incomeList} expenditureList={expenditureList} />
+                <BalanceTableTab onOpen={onOpenModal} incomeList={incomeList} expenditureList={expenditureList}/>
             </Stack>
             <EditModal onClose={onClose} isOpen={isOpen}/>
         </>

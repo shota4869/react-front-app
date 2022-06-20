@@ -1,7 +1,9 @@
-import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Tfoot, IconButton, Tooltip } from "@chakra-ui/react"
+import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Tfoot, IconButton, Tooltip, useDisclosure } from "@chakra-ui/react"
 import { AddIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
-import { memo, ReactNode, useState, VFC } from "react";
+import { memo, MouseEventHandler, ReactNode, useEffect, useState, VFC } from "react";
 import "../styles/data-table.css"
+import { useDeleteBalance } from "../../hooks/useDeleteBalance";
+import { EditModal } from "../pages/modals/EditModal";
 
 type Props = {
     onOpen: () => void,
@@ -11,8 +13,10 @@ type Props = {
 
 export const BalanceTable: VFC<Props> = memo((props) => {
 
-    const { onOpen, balanceList, children } = props;
+    const {  balanceList, children } = props;
 
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { deleteAction } = useDeleteBalance();
 
     const onOpenModal = () => {
         onOpen();
@@ -22,9 +26,16 @@ export const BalanceTable: VFC<Props> = memo((props) => {
         alert("hi")
     }
 
+    const onClickDelete = (id: String) => {
+
+        deleteAction(id);
+        window.location.reload();
+    }
+
     return (
+        <>
         <TableContainer overflowY="auto" maxHeight="450px">
-            <Table >
+            <Table id="table">
                 <Thead bgColor="telegram.300" className="thead_fix" >
                     <Tr>
                         <Th fontSize="sm" color="gray.50" pr={5}>日付</Th>
@@ -37,7 +48,7 @@ export const BalanceTable: VFC<Props> = memo((props) => {
                 </Thead>
                 <Tbody>
                     {balanceList.map((balance) =>
-                        <Tr onClick={onClickRow} _hover={{ bg: "orange.100" }} key={balance['id']}>
+                        <Tr _hover={{ bg: "orange.100" }} key={balance['id']}>
                             <Td textAlign={"center"} w="1">{balance['date']}</Td>
                             <Td>{balance['categoryName']}</Td>
                             <Td isNumeric>{balance['amount']}円</Td>
@@ -50,12 +61,14 @@ export const BalanceTable: VFC<Props> = memo((props) => {
                                 <IconButton aria-label="削除" icon={<EditIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
                             </Td>
                             <Td >
-                                <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={onOpenModal} />
+                                <IconButton aria-label="削除" icon={<DeleteIcon />} size="sm" variant="unstyled" onClick={() => onClickDelete(balance['id'])} />
                             </Td>
                         </Tr>
                     )}
                 </Tbody>
             </Table>
         </TableContainer >
+        <EditModal onClose={onClose} isOpen={isOpen}/>
+        </>
     )
 })

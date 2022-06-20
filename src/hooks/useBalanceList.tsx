@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 const Balance_API_BASE_URL = "http://localhost:8080/api/balance-list";
 
 
-export const useBalanceList = (requestJson: string) => {
+export const useBalanceList = () => {
 
     const navigate = useNavigate();
 
     const [incomeList, setIncomeList] = useState([]);
     const [expenditureList, setExpenditureList] = useState([]);
 
-    const balanceList = useCallback(() =>{
+    const findBalanceList = useCallback((requestJson: string) =>{
 
         axios.post(Balance_API_BASE_URL,requestJson,{withCredentials: true,headers: {'Content-Type': 'application/json'}})
         .then((res) =>{
@@ -24,11 +24,10 @@ export const useBalanceList = (requestJson: string) => {
         .catch((err) => {
 
             // //リダイレクト
-            navigate("/login")
 
         });
 
-    },[navigate,requestJson])
+    },[])
 
-    return { balanceList ,incomeList ,expenditureList }
+    return { findBalanceList ,incomeList ,expenditureList }
 }

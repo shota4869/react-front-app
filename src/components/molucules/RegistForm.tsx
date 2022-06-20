@@ -50,6 +50,8 @@ export const RegistForm: VFC<Props> = memo((props) => {
             return
         }
         saveAction(saveForm);
+        window.location.reload();
+
     }
 
     return (
