@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { homeForm } from "../type/api/homeForm"
 
 const HOME_API_BASE_URL = "http://localhost:8080/api/home";
-
 
 type User = {
     id: Number,
@@ -29,11 +29,27 @@ export const useHome = () => {
             .catch(err => {
                 navigate("/login")
             })
-    },[navigate])
+    }, [navigate])
 
-    const saveAction = useCallback((form: Object) => {
+    const saveAction = useCallback((form: homeForm) => {
 
-        axios.post(HOME_API_BASE_URL+ "/save", form, { withCredentials: true ,headers: {'Content-Type': 'application/json'}})
+        if (form.categoryCode === "") {
+            alert("カテゴリーを選択してください")
+            return
+        }
+        if (form.date === null) {
+            alert("日付を入力してください")
+            return
+        }
+        if (form.amount === "") {
+            alert("金額を入力してください")
+            return
+        }
+
+        const requestForm = JSON.stringify(form);
+        console.log(requestForm)
+
+        axios.post(HOME_API_BASE_URL + "/save", requestForm, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
             .then((res) => {
                 console.log(res.data)
             })
@@ -41,8 +57,7 @@ export const useHome = () => {
                 alert("保存に失敗しました。")
 
             });
-
     }, [])
 
-    return { user, incomeCategory, expenditureCategory, saveAmount ,init ,saveAction}
+    return { user, incomeCategory, expenditureCategory, saveAmount, init, saveAction }
 }

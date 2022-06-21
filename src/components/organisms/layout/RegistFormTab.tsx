@@ -1,12 +1,14 @@
 import { Tab, TabList, TabPanel, TabPanels, Tabs, Heading } from "@chakra-ui/react"
 import { VFC } from "react"
 import { RegistForm } from "../../molucules/RegistForm"
+import { homeForm } from "../../../type/api/homeForm"
+
 
 type Props ={
     incomeArry: never[],
     expenditureArry:never[],
     userId: Number,
-    saveAction: (form: Object) => void,
+    saveAction: (form: homeForm) => void,
     init: () => void
 }
 

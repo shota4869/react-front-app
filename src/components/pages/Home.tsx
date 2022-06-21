@@ -6,7 +6,6 @@ import { Heading, Stack } from "@chakra-ui/react"
 
 import { RegistFormTab } from "../organisms/layout/RegistFormTab"
 import { Header } from "../organisms/layout/Header"
-import { useState } from "react"
 
 type User = {
     id: Number,
@@ -15,19 +14,12 @@ type User = {
 }
 
 export const Home: VFC = memo(() => {
-
-    const [incomeCategory1,setIncomeCtegory1] = useState([]);
-    const [expenditureCategory1,setExpenditureCtegory1] = useState([]);
-    const [user1, setUser1] = useState<User | null>(null);
-
-
     
     const { user, incomeCategory, expenditureCategory, saveAmount,init, saveAction } = useHome();
 
     useEffect(() => {
-        // const { user, incomeCategory, expenditureCategory, saveAmount,init } = useHome();
         init();
-    }, [init,user1])
+    }, [init])
     const date = new Date()
 
     return (

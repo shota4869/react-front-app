@@ -6,17 +6,20 @@ import "react-datepicker/dist/react-datepicker.css";
 import ja from "date-fns/locale/ja";
 import '../styles/date-picker.css';
 import { SaveButton } from "../atoms/button/SaveButton";
+import { homeForm } from "../../type/api/homeForm"
+
 
 type Props ={
     categoryArry: never[],
     userId: Number,
     balanceFlg: Number,
-    saveAction: (form: Object) => void,
+    saveAction: (form: homeForm) => void,
     init: () => void
 }
+
 export const RegistForm: VFC<Props> = memo((props) => {
     const {categoryArry, userId, balanceFlg ,saveAction ,init} = props;
-    
+
     const today = new Date();
     //useState
     const [category, settCategory] = useState('')
@@ -29,22 +32,9 @@ export const RegistForm: VFC<Props> = memo((props) => {
     const onChangeCategory = (e: ChangeEvent<HTMLSelectElement>) => settCategory(e.target.value);
     const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setRemarks(event.target.value);
     
-    const saveForm = JSON.stringify({'userId': userId, 'categoryCode': category, 'balanceFlg': balanceFlg ,'date': date, 'amount': amount, 'remarks': remarks })
-
+    const saveForm: homeForm = {userId,  categoryCode: category,  balanceFlg , date,  amount,  remarks }
 
     const onClickSaveButton = () => {
-        if(category === ""){
-            alert("カテゴリーを選択してください")
-            return
-        }
-        if(date === null){
-            alert("日付を入力してください")
-            return
-        }
-        if( amount === "" ){
-            alert("金額を入力してください")
-            return
-        }
         saveAction(saveForm);
         // window.location.reload();
         init();
