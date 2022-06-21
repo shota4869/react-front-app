@@ -12,14 +12,11 @@ type User = {
 }
 export const useHome = () => {
 
-
     const navigate = useNavigate();
     const [user, setUser] = useState<User | null>(null);
     const [incomeCategory, setIncomeCategory] = useState([]);
     const [expenditureCategory, setExpenditureCategory] = useState([]);
     const [saveAmount, setSaveAmount] = useState([]);
-
-
 
     const init = useCallback(() => {
         axios.get(HOME_API_BASE_URL, { withCredentials: true })
@@ -28,13 +25,24 @@ export const useHome = () => {
                 setIncomeCategory(res.data.incomeCategory)
                 setExpenditureCategory(res.data.expenditureCategory)
                 setSaveAmount(res.data.saveAmount)
-                console.log("hi")
-
             })
             .catch(err => {
                 navigate("/login")
             })
     },[navigate])
 
-    return { user, incomeCategory, expenditureCategory, saveAmount ,init}
+    const saveAction = useCallback((form: Object) => {
+
+        axios.post(HOME_API_BASE_URL+ "/save", form, { withCredentials: true ,headers: {'Content-Type': 'application/json'}})
+            .then((res) => {
+                console.log(res.data)
+            })
+            .catch((err) => {
+                alert("保存に失敗しました。")
+
+            });
+
+    }, [])
+
+    return { user, incomeCategory, expenditureCategory, saveAmount ,init ,saveAction}
 }

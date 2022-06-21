@@ -21,25 +21,17 @@ export const BalanceOfPayment = memo(() => {
     
 
     const requestJson = JSON.stringify({'date': slashDate})
-    const { findBalanceList ,incomeList ,expenditureList} = useBalanceList();
+    // const { findBalanceList ,incomeList ,expenditureList} = useBalanceList();
 
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const onOpenModal = () => {
-        onOpen();
-    }
-
-    useEffect(() => {
-        findBalanceList(requestJson)
-    },[findBalanceList])
+    
 
     return (
         <>
             <Header />
             <Stack spacing={4} px={4} py={5}>
-                <BalanceTableTab onOpen={onOpenModal} incomeList={incomeList} expenditureList={expenditureList}/>
+                <BalanceTableTab requestJson={requestJson}/>
             </Stack>
-            <EditModal onClose={onClose} isOpen={isOpen}/>
+            
         </>
     )
 })

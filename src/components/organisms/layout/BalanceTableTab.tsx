@@ -1,17 +1,23 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel,  Flex } from "@chakra-ui/react"
-import { memo, VFC } from "react";
+import { memo, useEffect, VFC } from "react";
+import { useBalanceList } from "../../../hooks/useBalanceList";
 import { DonutsChart } from "../../atoms/graphs/DonutsChart";
 import { BalanceTable } from "../../molucules/BalanceTable";
 
 type Props = {
-    onOpen: () => void,
-    incomeList: never[],
-    expenditureList: never[]
+
+    requestJson: string
 }
 
 export const BalanceTableTab: VFC<Props> = memo((props) => {
 
-    const { onOpen ,incomeList ,expenditureList} = props;
+    const { requestJson } = props;
+
+    const {findBalanceList, deleteAction,incomeList,expenditureList } = useBalanceList();
+
+    useEffect(() => {
+        findBalanceList(requestJson)
+    },[findBalanceList])
 
     return (
         <Tabs isFitted isManual variant='enclosed'>
@@ -22,11 +28,11 @@ export const BalanceTableTab: VFC<Props> = memo((props) => {
             <TabPanels fontSize={{ base: "sm", md: "md" }} padding={{ base: 2, md: 3 }}>
                 <TabPanel>
                     <DonutsChart />
-                    <BalanceTable onOpen={onOpen} balanceList={expenditureList}>支出</BalanceTable>
+                    <BalanceTable  balanceList={expenditureList} deleteAction={deleteAction} findBalanceList={findBalanceList} req={requestJson}>支出</BalanceTable>
                 </TabPanel>
                 <TabPanel>
                         <DonutsChart />
-                    <BalanceTable onOpen={onOpen} balanceList={incomeList}>収入</BalanceTable>
+                    <BalanceTable balanceList={incomeList} deleteAction={deleteAction} findBalanceList={findBalanceList} req={requestJson}>収入</BalanceTable>
                 </TabPanel>
             </TabPanels>
         </Tabs>

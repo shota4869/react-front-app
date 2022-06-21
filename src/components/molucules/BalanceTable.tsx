@@ -2,34 +2,31 @@ import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Tfoot, IconButton, Too
 import { AddIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { memo, MouseEventHandler, ReactNode, useEffect, useState, VFC } from "react";
 import "../styles/data-table.css"
-import { useDeleteBalance } from "../../hooks/useDeleteBalance";
 import { EditModal } from "../pages/modals/EditModal";
 
 type Props = {
-    onOpen: () => void,
     balanceList: never[],
-    children: ReactNode
+    children: ReactNode,
+    deleteAction: (id: String) => void,
+    findBalanceList:(req: string) => void,
+    req: string
 }
 
 export const BalanceTable: VFC<Props> = memo((props) => {
 
-    const {  balanceList, children } = props;
+    const {  balanceList, children,deleteAction ,findBalanceList, req} = props;
 
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { deleteAction } = useDeleteBalance();
+    
 
     const onOpenModal = () => {
         onOpen();
     }
 
-    const onClickRow = () => {
-        alert("hi")
-    }
-
     const onClickDelete = (id: String) => {
-
         deleteAction(id);
-        window.location.reload();
+        findBalanceList(req);
+        // window.location.reload();
     }
 
     return (

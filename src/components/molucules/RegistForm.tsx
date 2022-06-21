@@ -6,27 +6,23 @@ import "react-datepicker/dist/react-datepicker.css";
 import ja from "date-fns/locale/ja";
 import '../styles/date-picker.css';
 import { SaveButton } from "../atoms/button/SaveButton";
-import { useSaveBalance } from "../../hooks/useSaveBalance";
+
 type Props ={
     categoryArry: never[],
     userId: Number,
-    balanceFlg: Number
+    balanceFlg: Number,
+    saveAction: (form: Object) => void,
+    init: () => void
 }
-
 export const RegistForm: VFC<Props> = memo((props) => {
-    const {categoryArry, userId, balanceFlg} = props;
-
-
+    const {categoryArry, userId, balanceFlg ,saveAction ,init} = props;
+    
     const today = new Date();
     //useState
     const [category, settCategory] = useState('')
     const [amount, setAmount] = useState('');
     const [date, setDate] = useState(today);
     const [remarks, setRemarks] = useState('')
-
-    //useHooks
-    const { saveAction } = useSaveBalance();
-    
 
     registerLocale("ja", ja);
     const onChangeAmount = (e: ChangeEvent<HTMLInputElement>) => setAmount(e.target.value);
@@ -50,7 +46,8 @@ export const RegistForm: VFC<Props> = memo((props) => {
             return
         }
         saveAction(saveForm);
-        window.location.reload();
+        // window.location.reload();
+        init();
 
     }
 

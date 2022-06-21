@@ -29,5 +29,19 @@ export const useBalanceList = () => {
 
     },[])
 
-    return { findBalanceList ,incomeList ,expenditureList }
+    const deleteAction = useCallback((id: String) => {
+
+        axios.delete(Balance_API_BASE_URL +"/"+ id,  { withCredentials: true ,headers: {'Content-Type': 'application/json'}})
+            .then((res) => {
+                console.log(res.data)
+                
+            })
+            .catch((err) => {
+                alert("削除に失敗しました。")
+
+            });
+
+    }, [])
+
+    return { findBalanceList ,incomeList ,expenditureList ,deleteAction}
 }

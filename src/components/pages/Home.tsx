@@ -22,27 +22,24 @@ export const Home: VFC = memo(() => {
 
 
     
-    const { user, incomeCategory, expenditureCategory, saveAmount,init } = useHome();
+    const { user, incomeCategory, expenditureCategory, saveAmount,init, saveAction } = useHome();
+
     useEffect(() => {
         // const { user, incomeCategory, expenditureCategory, saveAmount,init } = useHome();
         init();
-        setIncomeCtegory1(incomeCategory)
-        setExpenditureCtegory1(expenditureCategory)
-        setUser1(user)
-
     }, [init,user1])
     const date = new Date()
 
     return (
         <>
             <Header />
-            <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="right">おかえり、{ user1 && user1.name }さん</Heading>
-            <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">本日使用できる金額は残り○○円です</Heading>
+            <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="right">おかえり、{ user && user.name }さん</Heading>
+            <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">本日使用できる金額は残り{saveAmount}円です</Heading>
             <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">今月の目標貯金額は〇〇円です</Heading>
 
             <Stack spacing={4} px={4} py={5}>
                 <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>{date.toLocaleDateString()}</Heading>
-                <RegistFormTab incomeArry={incomeCategory1} expenditureArry={expenditureCategory1} userId={ user1 == null ? 0 : Number(user1.id) } />
+                <RegistFormTab incomeArry={incomeCategory} expenditureArry={expenditureCategory} userId={ user == null ? 0 : Number(user.id) } saveAction={saveAction} init={init}/>
             </Stack>
             <Outlet />
         </>
