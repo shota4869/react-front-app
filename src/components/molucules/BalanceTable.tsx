@@ -25,9 +25,14 @@ export const BalanceTable: VFC<Props> = memo((props) => {
 
     const onClickDelete = (id: String) => {
         deleteAction(id);
+
         findBalanceList(req);
         // window.location.reload();
     }
+
+    useEffect(() => {
+
+    },[findBalanceList])
 
     return (
         <>
@@ -46,7 +51,7 @@ export const BalanceTable: VFC<Props> = memo((props) => {
                 <Tbody>
                     {balanceList.map((balance) =>
                         <Tr _hover={{ bg: "orange.100" }} key={balance['id']}>
-                            <Td textAlign={"center"} w="1">{balance['date']}</Td>
+                            <Td>{balance['date']}</Td>
                             <Td>{balance['categoryName']}</Td>
                             <Td isNumeric>{balance['amount']}円</Td>
                             <Td >

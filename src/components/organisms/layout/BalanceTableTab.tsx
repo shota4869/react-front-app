@@ -17,6 +17,7 @@ export const BalanceTableTab: VFC<Props> = memo((props) => {
 
     useEffect(() => {
         findBalanceList(requestJson)
+        console.log("★"+incomeList)
     },[findBalanceList])
 
     return (

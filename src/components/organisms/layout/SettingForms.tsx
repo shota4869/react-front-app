@@ -2,9 +2,17 @@ import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPane
 import { memo, VFC } from "react";
 import { AmountSettingForm } from "../../molucules/AmountSettingForm";
 import { LineSettingForm } from "../../molucules/LineSettingForm";
+import { lineSetting } from "../../../type/api/lineSetting";
+import { amountSetting } from "../../../type/api/amountSetting";
 
-export const SettingForms: VFC = memo(() => {
 
+type Props = {
+    amountSetting: amountSetting | null,
+    lineSetting: lineSetting | null
+}
+export const SettingForms: VFC<Props> = memo((props) => {
+
+    const { lineSetting,amountSetting } = props
 
     const date = new Date();
 
@@ -21,7 +29,7 @@ export const SettingForms: VFC = memo(() => {
                             </AccordionButton>
                         </h2>
                         <AccordionPanel pb={4}>
-                                <AmountSettingForm />
+                                <AmountSettingForm amountSetting={amountSetting}/>
                         </AccordionPanel>
                     </AccordionItem>
 
@@ -35,7 +43,7 @@ export const SettingForms: VFC = memo(() => {
                             </AccordionButton>
                         </h2>
                         <AccordionPanel pb={4}>
-                            <LineSettingForm />
+                            <LineSettingForm lineSetting={lineSetting}/>
                         </AccordionPanel>
                     </AccordionItem>
                 </Accordion>

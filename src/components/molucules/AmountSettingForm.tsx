@@ -1,14 +1,18 @@
 import { Box, Flex, FormLabel, Input, Stack } from "@chakra-ui/react";
-import { ChangeEvent, memo, useState, VFC } from "react";
-import ReactDatePicker from "react-datepicker";
+import { ChangeEvent, memo, useEffect, useState, VFC } from "react";
 import { SaveButton } from "../atoms/button/SaveButton";
-import ja from "date-fns/locale/ja";
-import { useSaveAmountSetting } from "../../hooks/useSaveAmountSetting";
+import { useSetting } from "../../hooks/useSetting";
+import { amountSetting } from "../../type/api/amountSetting";
 
-export const AmountSettingForm: VFC = memo(() => {
+
+type Props = {
+    amountSetting: amountSetting | null
+}
+export const AmountSettingForm: VFC<Props> = memo((props) => {
+
+    const { amountSetting } = props
 
     //貯金額Form
-    // const [goalMonth, setGoalMonth] = useState<Date | null>(null);
     const [goalAmount, setGoalAmount] = useState('');
     const [fixIncome, setFixIncome] = useState('');
     const [fixExpenditure, setFixExpenditure] = useState('');
@@ -16,21 +20,26 @@ export const AmountSettingForm: VFC = memo(() => {
     const onChangeAmount = (e: ChangeEvent<HTMLInputElement>) => setGoalAmount(e.target.value);
     const onChangeFixIncome = (e: ChangeEvent<HTMLInputElement>) => setFixIncome(e.target.value);
     const onChangeFixExpenditure = (e: ChangeEvent<HTMLInputElement>) => setFixExpenditure(e.target.value);
-    // const onChangeMonth = (selectedDate:Date| React.SyntheticEvent<any, Event> | undefined) => setGoalMonth(selectedDate || null);
-    
 
-    const requestForm = {"goalAmount": goalAmount,"fixIncome": fixIncome,"fixExpenditure": fixExpenditure}
-    // "goalMonth": goalMonth && goalMonth.toLocaleDateString().substring(0,6) ,
-    const { saveAction } = useSaveAmountSetting();
-    const onClickSetting = () =>{
-        saveAction(requestForm);
+    const requestForm = { "goalAmount": goalAmount, "fixIncome": fixIncome, "fixExpenditure": fixExpenditure }
+    const { saveAmountAction } = useSetting();
+
+
+    useEffect(() => {
+        if (amountSetting) {
+            setGoalAmount(amountSetting.saveAmount)
+            setFixIncome(amountSetting.fixedIncome)
+            setFixExpenditure(amountSetting.fixedExpenditure)
+        }
+    }, [amountSetting])
+
+    const onClickSetting = () => {
+        saveAmountAction(requestForm);
     }
 
     return (
         <>
             <Stack spacing={4} px={10} py={3}>
-                {/* <FormLabel htmlFor="month">貯金する月</FormLabel>
-                <ReactDatePicker showMonthYearPicker id="date" dateFormat="yyyy/MM" autoComplete="off" selected={goalMonth} onChange={(selectedDate)=>{setGoalMonth(selectedDate || null) }} locale={ja} /> */}
                 <FormLabel htmlFor="amount">目標貯金額</FormLabel>
                 <Input id="amount" placeholder="" value={goalAmount} onChange={onChangeAmount} type="number" />
                 <FormLabel htmlFor="amount">固定収入</FormLabel>

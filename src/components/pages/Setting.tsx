@@ -1,5 +1,5 @@
-import { Accordion, AccordionButton, Container} from "@chakra-ui/react"
-import {  memo, useEffect } from "react";
+import { Container} from "@chakra-ui/react"
+import { memo, useEffect } from "react";
 import { Header } from "../organisms/layout/Header";
 
 
@@ -11,20 +11,17 @@ import { SettingForms } from "../organisms/layout/SettingForms";
 
 export const Setting = memo(() => {
 
-    const { init } = useSetting();
-    
-    const date = new Date();
+    const { init ,lineSettings, amountSettings} = useSetting();
 
     useEffect(() => {
         init();
-
     }, [init])
 
     return (
         <>
             <Header />
             <Container maxW="800px" my={4}>
-                <SettingForms />
+                <SettingForms amountSetting={amountSettings} lineSetting={lineSettings}/>
             </Container>
         </>
     )

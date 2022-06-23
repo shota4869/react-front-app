@@ -7,7 +7,7 @@ import ja from "date-fns/locale/ja";
 import '../styles/date-picker.css';
 import { SaveButton } from "../atoms/button/SaveButton";
 import { homeForm } from "../../type/api/homeForm"
-
+registerLocale('ja', ja)
 
 type Props ={
     categoryArry: never[],
@@ -27,12 +27,12 @@ export const RegistForm: VFC<Props> = memo((props) => {
     const [date, setDate] = useState(today);
     const [remarks, setRemarks] = useState('')
 
-    registerLocale("ja", ja);
+    // registerLocale("ja", ja);
     const onChangeAmount = (e: ChangeEvent<HTMLInputElement>) => setAmount(e.target.value);
     const onChangeCategory = (e: ChangeEvent<HTMLSelectElement>) => settCategory(e.target.value);
     const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setRemarks(event.target.value);
     
-    const saveForm: homeForm = {userId,  categoryCode: category,  balanceFlg , date,  amount,  remarks }
+    const saveForm: homeForm = {userId,  categoryCode: category,  balanceFlg , date: date.toLocaleDateString() ,  amount,  remarks }
 
     const onClickSaveButton = () => {
         saveAction(saveForm);
@@ -40,6 +40,7 @@ export const RegistForm: VFC<Props> = memo((props) => {
         init();
 
     }
+    
 
     return (
         <Stack spacing={4} px={10} py={3}>

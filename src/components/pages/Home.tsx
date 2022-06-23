@@ -15,7 +15,7 @@ type User = {
 
 export const Home: VFC = memo(() => {
     
-    const { user, incomeCategory, expenditureCategory, saveAmount,init, saveAction } = useHome();
+    const { user, incomeCategory, expenditureCategory, saveAmount ,init, saveAction } = useHome();
 
     useEffect(() => {
         init();

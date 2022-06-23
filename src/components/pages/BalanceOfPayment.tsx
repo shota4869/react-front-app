@@ -16,15 +16,10 @@ export const BalanceOfPayment = memo(() => {
 
     const { date }  = location.state as State;
     const slashDate = date.replace("-","/").replace("-","/");
-    // const dateYyyyMm = date.replace("-","").replace("-","");
-
     
-
     const requestJson = JSON.stringify({'date': slashDate})
-    // const { findBalanceList ,incomeList ,expenditureList} = useBalanceList();
 
-    
-
+    console.log(date)
     return (
         <>
             <Header />

@@ -2,7 +2,7 @@ export type homeForm = {
     userId: Number,
     categoryCode: String,
     balanceFlg: Number,
-    date: Date,
+    date: String,
     amount: String,
     remarks: String
 }

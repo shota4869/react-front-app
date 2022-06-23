@@ -1,9 +1,15 @@
 import { Box, Flex, FormLabel, Input, Stack, Switch } from "@chakra-ui/react";
-import { ChangeEvent, memo, useState, VFC } from "react";
-import { useSaveLineSetting } from "../../hooks/useSaveLineSetting";
+import { ChangeEvent, memo, useEffect, useLayoutEffect, useState, VFC } from "react";
+import { useSetting } from "../../hooks/useSetting";
 import { SaveButton } from "../atoms/button/SaveButton";
+import { lineSetting } from "../../type/api/lineSetting";
 
-export const LineSettingForm: VFC = memo(() => {
+type Props = {
+    lineSetting: lineSetting | null
+}
+export const LineSettingForm: VFC<Props> = memo((props) => {
+
+    const { lineSetting } = props
 
     //ライン通知設定Form
     const [accessToken, setAccessToken] = useState('');
@@ -12,12 +18,25 @@ export const LineSettingForm: VFC = memo(() => {
     const onChangeAccessToken = (e: ChangeEvent<HTMLInputElement>) => setAccessToken(e.target.value);
     const onChangeLineFlg = () => setLineFlg(!lineFlg);
 
-    const { saveAction } = useSaveLineSetting();
+    const { saveLineAction } = useSetting();
     const requestForm = {"accessToken": accessToken,"lineFlg": lineFlg ? "1" :"0"}
+    
+    useEffect(() => {
+        if(lineSetting){
+          setAccessToken(lineSetting.accessToken);
+            if(lineSetting.lineFlg === "0"){
+                setLineFlg(false);
+            } else { 
+                setLineFlg(true);
+            }
+        }
+    },[lineSetting])
+
 
     const onClickSetting = () =>{
-        saveAction(requestForm)
-        console.log(requestForm)
+        saveLineAction(requestForm)
+        // console.log(lineSetting)
+        // setLineFlg();
     }
 
     return (
