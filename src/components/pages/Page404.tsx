@@ -1,9 +1,8 @@
-import { HeaderLayout } from "../templete/HeaderLayout"
-
+import { Header } from "../organisms/layout/Header"
 
 export const Page404 = () => (
   <>
-    <HeaderLayout />
+    <Header />
     <p>404 お探しのページは見つかりません。</p>
   </>
 );

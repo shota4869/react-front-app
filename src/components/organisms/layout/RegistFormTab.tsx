@@ -7,7 +7,7 @@ import { homeForm } from "../../../type/api/homeForm"
 type Props ={
     incomeArry: never[],
     expenditureArry:never[],
-    userId: Number,
+    userId: number,
     saveAction: (form: homeForm) => void,
     init: () => void
 }

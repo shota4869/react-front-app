@@ -8,7 +8,7 @@ import { Header } from "../organisms/layout/Header";
 
 export const CalenderPage: VFC = memo(() => {
 
-    const { calender } = useCalenderPage();
+    const { calender , calenderList} = useCalenderPage();
 
     useEffect(() => {
         calender();
@@ -18,7 +18,7 @@ export const CalenderPage: VFC = memo(() => {
         <>
             <Header />
             <Stack spacing={4} px={4} py={5}>
-                <Calender />
+                <Calender calenderList={calenderList}/>
             </Stack>
         </>
     )

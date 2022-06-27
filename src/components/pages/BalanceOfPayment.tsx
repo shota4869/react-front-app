@@ -1,10 +1,8 @@
-import {  Stack, useDisclosure } from "@chakra-ui/react"
-import { memo, useEffect } from "react"
+import {  Stack } from "@chakra-ui/react"
+import { memo } from "react"
 import { useLocation } from "react-router-dom"
-import { useBalanceList } from "../../hooks/useBalanceList"
 import { BalanceTableTab } from "../organisms/layout/BalanceTableTab"
 import { Header } from "../organisms/layout/Header"
-import { EditModal } from "./modals/EditModal"
 
 interface State {
     date: string;
@@ -19,7 +17,6 @@ export const BalanceOfPayment = memo(() => {
     
     const requestJson = JSON.stringify({'date': slashDate})
 
-    console.log(date)
     return (
         <>
             <Header />

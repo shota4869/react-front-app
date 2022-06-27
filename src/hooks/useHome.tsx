@@ -2,6 +2,7 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { homeForm } from "../type/api/homeForm"
+import { useMessage } from "./useMssage";
 
 const HOME_API_BASE_URL = "http://localhost:8080/api/home";
 
@@ -12,11 +13,15 @@ type User = {
 }
 export const useHome = () => {
 
+    const { showMessage } = useMessage();
+
     const navigate = useNavigate();
     const [user, setUser] = useState<User | null>(null);
     const [incomeCategory, setIncomeCategory] = useState([]);
     const [expenditureCategory, setExpenditureCategory] = useState([]);
-    const [saveAmount, setSaveAmount] = useState([]);
+    const [saveAmount, setSaveAmount] = useState(0);
+    const [usableAmount, setUsableAmount] = useState(0);
+
 
     const init = useCallback(() => {
         axios.get(HOME_API_BASE_URL, { withCredentials: true })
@@ -25,6 +30,7 @@ export const useHome = () => {
                 setIncomeCategory(res.data.incomeCategory)
                 setExpenditureCategory(res.data.expenditureCategory)
                 setSaveAmount(res.data.saveAmount)
+                setUsableAmount(res.data.usableAmount)
             })
             .catch(err => {
                 navigate("/login")
@@ -52,12 +58,13 @@ export const useHome = () => {
         axios.post(HOME_API_BASE_URL + "/save", requestForm, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
             .then((res) => {
                 console.log(res.data)
+                showMessage({ title: "保存しました。", status: "success" })
+                setUsableAmount(res.data)
             })
             .catch((err) => {
-                alert("保存に失敗しました。")
-
+                showMessage({ title: "保存に失敗しました。", status: "error" })
             });
     }, [])
 
-    return { user, incomeCategory, expenditureCategory, saveAmount, init, saveAction }
+    return { user, incomeCategory, expenditureCategory, saveAmount, init, saveAction ,usableAmount}
 }

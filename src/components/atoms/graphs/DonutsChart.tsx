@@ -6,6 +6,8 @@ import { ApexOptions } from "apexcharts";
 
 const donutData = [44, 55, 13, 33]
 
+const obj = [{'categoryName': '食費', 'totalAmount': 300},{'categoryName':'交通費', 'totalAmount': 400},{'categoryName':'接待費', 'totalAmount': 5000}]
+
 const labels: string[] = ['食費', '衣料品', '交通費', 'その他']
 
 const options: ApexOptions = {

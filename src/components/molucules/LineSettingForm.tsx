@@ -1,5 +1,5 @@
 import { Box, Flex, FormLabel, Input, Stack, Switch } from "@chakra-ui/react";
-import { ChangeEvent, memo, useEffect, useLayoutEffect, useState, VFC } from "react";
+import { ChangeEvent, memo, useEffect, useState, VFC } from "react";
 import { useSetting } from "../../hooks/useSetting";
 import { SaveButton } from "../atoms/button/SaveButton";
 import { lineSetting } from "../../type/api/lineSetting";
@@ -35,8 +35,6 @@ export const LineSettingForm: VFC<Props> = memo((props) => {
 
     const onClickSetting = () =>{
         saveLineAction(requestForm)
-        // console.log(lineSetting)
-        // setLineFlg();
     }
 
     return (
