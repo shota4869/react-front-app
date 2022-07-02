@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { lineSetting } from "../type/api/lineSetting" 
 import { amountSetting } from "../type/api/amountSetting" 
-import { useMessage } from "./useMssage";
+import { useMessage } from "./useMessage";
 
 
 const HOME_API_BASE_URL = "http://localhost:8080/api/setting";

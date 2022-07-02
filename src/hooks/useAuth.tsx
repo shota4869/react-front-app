@@ -2,7 +2,7 @@ import axios from "axios";
 import { useCallback, useContext } from "react";
 import { NavigateFunction } from "react-router-dom";
 import { LoginUserContext } from "../providers/LoginUserProvider";
-import { useMessage } from "./useMssage";
+import { useMessage } from "./useMessage";
 
 const LOGIN_API_BASE_URL = "http://localhost:8080/login";
 const LOGIN_API_GET_BASE_URL = "http://localhost:8080/api/login";

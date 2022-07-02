@@ -29,6 +29,6 @@ export const Calender: VFC<Props> = (props) => {
             initialView="dayGridMonth"
             locales={[jaLocale]}         
             locale='ja'
-            events={[{title: "hi",start:"2022-06-22",fixed:"1",groupId: "1"}]} eventClick={eventClick}/>
+            events={calenderList} eventClick={eventClick}/>
     )
 }
