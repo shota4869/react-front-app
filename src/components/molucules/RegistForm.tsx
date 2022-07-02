@@ -1,6 +1,5 @@
-import { Box,  Flex, FormLabel, Input, Select, Stack, Textarea, Container } from "@chakra-ui/react"
+import { Box,  Flex, FormLabel, Input, Select, Stack, Textarea, Container} from "@chakra-ui/react"
 import { VFC, memo, useState, ChangeEvent, useEffect } from "react"
-
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ja from "date-fns/locale/ja";
@@ -11,15 +10,13 @@ registerLocale('ja', ja)
 
 type Props ={
     categoryArry: never[],
-    userId: number,
     balanceFlg: number,
     saveAction: (form: homeForm) => void,
     init: () => void
 }
 
 export const RegistForm: VFC<Props> = memo((props) => {
-    const {categoryArry, userId, balanceFlg ,saveAction ,init} = props;
-
+    const {categoryArry,  balanceFlg ,saveAction } = props;
     const today = new Date();
     const [category, settCategory] = useState('')
     const [amount, setAmount] = useState('');
@@ -39,7 +36,7 @@ export const RegistForm: VFC<Props> = memo((props) => {
     const onChangeCategory = (e: ChangeEvent<HTMLSelectElement>) => settCategory(e.target.value);
     const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setRemarks(event.target.value);
     
-    const saveForm: homeForm = {userId,  categoryCode: category,  balanceFlg , date: date.toLocaleDateString('en-ZA').substring(0,10) ,  amount,  remarks }
+    const saveForm: homeForm = { categoryCode: category,  balanceFlg , date: date.toLocaleDateString('en-ZA').substring(0,10) ,  amount,  remarks }
 
     const onClickSaveButton = () => {
         saveAction(saveForm);
@@ -59,7 +56,7 @@ export const RegistForm: VFC<Props> = memo((props) => {
                     {categoryArry.map((key) => {
                         return <option key={key['id']} value={key['id']} >{key['categoryName']}</option>
                     })}
-                </Select>
+                </Select> 
                 <FormLabel htmlFor="date">年月日</FormLabel>
                 <DatePicker id="date" dateFormat="yyyy/MM/dd" selected={date} onChange={selectedDate => { setDate(selectedDate || today) }} locale={ja} />
                 <FormLabel htmlFor="amount">金額({amountString}円)</FormLabel>

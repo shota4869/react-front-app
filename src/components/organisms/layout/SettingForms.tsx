@@ -46,6 +46,7 @@ export const SettingForms: VFC<Props> = memo((props) => {
                             <LineSettingForm lineSetting={lineSetting}/>
                         </AccordionPanel>
                     </AccordionItem>
+                    
                 </Accordion>
         </>
     )

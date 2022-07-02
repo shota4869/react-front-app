@@ -1,6 +1,6 @@
-import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, IconButton, Tooltip, useDisclosure } from "@chakra-ui/react"
+import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, IconButton, Tooltip } from "@chakra-ui/react"
 import { DeleteIcon } from "@chakra-ui/icons";
-import { memo,  ReactNode, useEffect,  useLayoutEffect,  VFC } from "react";
+import { memo,  ReactNode, useLayoutEffect,  VFC } from "react";
 import "../styles/data-table.css"
 import { balance } from "../../type/api/balance"
 
@@ -8,13 +8,12 @@ type Props = {
     balanceList: Array<balance>,
     children: ReactNode,
     deleteAction: (id: string,req:string) => void,
-    getBalanceList:(req: string) => void,
     req: string
 }
 
 export const BalanceTable: VFC<Props> = memo((props) => {
 
-    const {  balanceList, children,deleteAction ,getBalanceList, req} = props;
+    const {  balanceList, children,deleteAction , req} = props;
     
     const onClickDelete = (id: string) => {
         deleteAction(id,req);

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useMessage } from "./useMssage";
 
 const Balance_API_BASE_URL = "http://localhost:8080/api/balance-list";
@@ -8,7 +8,7 @@ const Balance_API_BASE_URL = "http://localhost:8080/api/balance-list";
 
 export const useBalanceList = () => {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const { showMessage } = useMessage();
 
     const [incomeList, setIncomeList] = useState([]);
@@ -45,7 +45,7 @@ export const useBalanceList = () => {
 
             });
 
-    }, [])
+    }, [showMessage,getBalanceList])
 
     return { getBalanceList ,incomeList ,expenditureList ,deleteAction}
 }

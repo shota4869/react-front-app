@@ -23,14 +23,13 @@ export const useSetting = () => {
                 
                 setAmountSettings(res.data.amountSetting);
                 setLineSettings(res.data.lineSetting);
-                console.log(amountSettings)
             })
             .catch((err) => {
-            
+                console.log(err)
                 navigate("/login")
             });
 
-    }, [])
+    }, [navigate])
 
     const saveAmountAction = useCallback((form: Object) => {
 
@@ -44,7 +43,7 @@ export const useSetting = () => {
 
             });
 
-    }, [])
+    }, [showMessage])
 
     const saveLineAction = useCallback((form: Object) => {
 
@@ -58,7 +57,7 @@ export const useSetting = () => {
 
             });
 
-    }, [])
+    }, [showMessage])
 
     return { init, saveAmountAction ,saveLineAction,amountSettings,lineSettings};
 }
