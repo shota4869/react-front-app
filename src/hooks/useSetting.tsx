@@ -59,5 +59,19 @@ export const useSetting = () => {
 
     }, [showMessage])
 
-    return { init, saveAmountAction ,saveLineAction,amountSettings,lineSettings};
+    const saveBalanceAction = useCallback((form: Object) => {
+
+        axios.post(HOME_API_BASE_URL  + "/balance"  , form, { withCredentials: true ,headers: {'Content-Type': 'application/json'}})
+            .then((res) => {
+                showMessage({ title: "設定しました。", status: "success" })
+            })
+            .catch((err) => {
+                showMessage({ title: "設定に失敗しました。", status: "error" })
+
+
+            });
+
+    }, [showMessage])
+
+    return { init, saveAmountAction ,saveLineAction, amountSettings, lineSettings, saveBalanceAction};
 }

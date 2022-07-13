@@ -1,6 +1,8 @@
 import axios from "axios";
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ExpenditureCategoryListContext } from "../providers/ExpenditureCategoryListProvider";
+import { IncomeCategoryListContext } from "../providers/IncomeCategoryListProvider";
 import { homeForm } from "../type/api/homeForm";
 import { useMessage } from "./useMessage";
 
@@ -10,9 +12,11 @@ export const useHome = () => {
 
     const { showMessage } = useMessage();
 
+    const { setIncomeCategory } = useContext(IncomeCategoryListContext);
+    const { setExpenditureCategory } = useContext(ExpenditureCategoryListContext);
+
+
     const navigate = useNavigate();
-    const [incomeCategory, setIncomeCategory] = useState([]);
-    const [expenditureCategory, setExpenditureCategory] = useState([]);
     const [saveAmount, setSaveAmount] = useState(0);
     const [usableAmount, setUsableAmount] = useState(0);
 
@@ -28,7 +32,7 @@ export const useHome = () => {
             .catch(err => {
                 navigate("/login")
             })
-    }, [navigate])
+    }, [navigate,setIncomeCategory,setExpenditureCategory])
 
     const saveAction = useCallback((form: homeForm) => {
 
@@ -59,5 +63,5 @@ export const useHome = () => {
             });
     }, [showMessage])
 
-    return {  incomeCategory, expenditureCategory, saveAmount, init, saveAction ,usableAmount}
+    return { saveAmount, init, saveAction ,usableAmount}
 }

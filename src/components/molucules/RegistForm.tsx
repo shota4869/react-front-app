@@ -1,5 +1,5 @@
-import { Box,  Flex, FormLabel, Input, Select, Stack, Textarea, Container} from "@chakra-ui/react"
-import { VFC, memo, useState, ChangeEvent, useEffect } from "react"
+import { Box,  Flex, FormLabel, Input, Select, Stack, Textarea, Container, Heading} from "@chakra-ui/react"
+import { VFC, memo, useState, ChangeEvent, useEffect, ReactNode } from "react"
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ja from "date-fns/locale/ja";
@@ -12,11 +12,12 @@ type Props ={
     categoryArry: never[],
     balanceFlg: number,
     saveAction: (form: homeForm) => void,
-    init: () => void
+    fixFlg: string,
+    children: ReactNode
 }
 
 export const RegistForm: VFC<Props> = memo((props) => {
-    const {categoryArry,  balanceFlg ,saveAction } = props;
+    const {categoryArry,  balanceFlg ,saveAction , fixFlg , children } = props;
     const today = new Date();
     const [category, settCategory] = useState('')
     const [amount, setAmount] = useState('');
@@ -36,13 +37,13 @@ export const RegistForm: VFC<Props> = memo((props) => {
     const onChangeCategory = (e: ChangeEvent<HTMLSelectElement>) => settCategory(e.target.value);
     const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setRemarks(event.target.value);
     
-    const saveForm: homeForm = { categoryCode: category,  balanceFlg , date: date.toLocaleDateString('en-ZA').substring(0,10) ,  amount,  remarks }
-
+    const saveForm: homeForm = { categoryCode: category,  balanceFlg , date: date.toLocaleDateString('en-ZA').substring(0,10) ,  amount,  remarks , fixFlg}
     const onClickSaveButton = () => {
         saveAction(saveForm);
     }
 
     useEffect(() =>{
+        // balanceFlg === 0 ? setTitle('収入') :  setTitle('支出')
         setAmount("")
         setAmountString("0")
     },[])
@@ -51,6 +52,7 @@ export const RegistForm: VFC<Props> = memo((props) => {
     return (
         <Stack spacing={4} px={10} py={3}>
             <Container maxW="600px">
+            <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">{children}入力</Heading>
                 <FormLabel>カテゴリー</FormLabel>
                 <Select placeholder='選択してください' onChange={onChangeCategory} >
                     {categoryArry.map((key) => {

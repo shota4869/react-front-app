@@ -4,6 +4,9 @@ import { AmountSettingForm } from "../../molucules/AmountSettingForm";
 import { LineSettingForm } from "../../molucules/LineSettingForm";
 import { lineSetting } from "../../../type/api/lineSetting";
 import { amountSetting } from "../../../type/api/amountSetting";
+import { RegistFormTab } from "./RegistFormTab"
+import { useSetting } from "../../../hooks/useSetting";
+
 
 
 type Props = {
@@ -16,6 +19,8 @@ export const SettingForms: VFC<Props> = memo((props) => {
 
     const date = new Date();
 
+    const { saveBalanceAction } = useSetting();
+
     return(
         <>
         <Accordion defaultIndex={[0]} allowMultiple>
@@ -23,7 +28,7 @@ export const SettingForms: VFC<Props> = memo((props) => {
                         <h2>
                             <AccordionButton>
                                 <Box flex='1' textAlign='left'>
-                                    今月({date.toLocaleDateString().substring(0,6)})の貯金額設定
+                                    今月({date.toLocaleDateString().substring(0,6)})の目標貯金額設定
                                 </Box>
                                 <AccordionIcon />
                             </AccordionButton>
@@ -32,7 +37,19 @@ export const SettingForms: VFC<Props> = memo((props) => {
                                 <AmountSettingForm amountSetting={amountSetting}/>
                         </AccordionPanel>
                     </AccordionItem>
-
+                    <AccordionItem>
+                        <h2>
+                            <AccordionButton>
+                                <Box flex='1' textAlign='left'>
+                                今月({date.toLocaleDateString().substring(0,6)})の固定収支設定
+                                </Box>
+                                <AccordionIcon />
+                            </AccordionButton>
+                        </h2>
+                        <AccordionPanel pb={4}>
+                        <RegistFormTab saveAction={saveBalanceAction} headerWord={"固定"} index={1} fixFlg={"1"}/>
+                        </AccordionPanel>
+                    </AccordionItem>
                     <AccordionItem>
                         <h2>
                             <AccordionButton>
@@ -46,7 +63,6 @@ export const SettingForms: VFC<Props> = memo((props) => {
                             <LineSettingForm lineSetting={lineSetting}/>
                         </AccordionPanel>
                     </AccordionItem>
-                    
                 </Accordion>
         </>
     )

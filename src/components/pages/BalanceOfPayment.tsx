@@ -1,4 +1,4 @@
-import {  Stack } from "@chakra-ui/react"
+import {  Stack ,Heading} from "@chakra-ui/react"
 import { memo } from "react"
 import { useLocation } from "react-router-dom"
 import { BalanceTableTab } from "../organisms/layout/BalanceTableTab"
@@ -20,6 +20,7 @@ export const BalanceOfPayment = memo(() => {
     return (
         <>
             <Header />
+            <Heading as="h1" fontSize={{ base: "sm", md: "md" }} textAlign="center">{slashDate}</Heading>
             <Stack spacing={4} px={4} py={5}>
                 <BalanceTableTab requestJson={requestJson}/>
             </Stack>
