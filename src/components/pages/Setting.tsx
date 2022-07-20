@@ -1,17 +1,14 @@
 import { Container} from "@chakra-ui/react"
 import { memo, useEffect } from "react";
 import { Header } from "../organisms/layout/Header";
-
-
 import { useSetting } from "../../hooks/useSetting";
-
 import { SettingForms } from "../organisms/layout/SettingForms";
 
 
 
 export const Setting = memo(() => {
 
-    const { init ,lineSettings, amountSettings} = useSetting();
+    const { init ,saveBalanceAction ,lineSettings, amountSettings,incomeAmount,expenditureAmount } = useSetting();
 
     useEffect(() => {
         init();
@@ -21,7 +18,7 @@ export const Setting = memo(() => {
         <>
             <Header />
             <Container maxW="800px" my={4}>
-                <SettingForms amountSetting={amountSettings} lineSetting={lineSettings}/>
+                <SettingForms saveBalanceAction={saveBalanceAction} amountSetting={amountSettings} lineSetting={lineSettings} incomeAmount={incomeAmount} expenditureAmount={expenditureAmount}/>
             </Container>
         </>
     )

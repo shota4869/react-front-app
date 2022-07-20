@@ -1,8 +1,9 @@
-import { memo, useCallback, VFC } from "react"
+import { memo, useCallback, useContext, VFC } from "react"
 import { Box, Flex, Heading, Link} from "@chakra-ui/react"
 
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "../../../hooks/useLogout";
+import { LoginUserContext } from "../../../providers/LoginUserProvider";
 
 
 
@@ -18,6 +19,7 @@ export const Header: VFC = memo(() => {
     const onClickLogout = () => {
         logout(navigate)
     };
+    const { loginUser } = useContext(LoginUserContext);
 
 
     return (
@@ -27,7 +29,6 @@ export const Header: VFC = memo(() => {
                     <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>貯金ちゃん</Heading>
                 </Flex>
                 <Flex align="center" fontSize="sm" flexGrow={2} display={{ base: "none", md: "flex" }}>
-
                     <Box pr={4}>
                         <Link onClick={onClickCalender}>カレンダー</Link>
                     </Box>
@@ -41,6 +42,7 @@ export const Header: VFC = memo(() => {
                     </Box>
                 </Flex>
             </Flex>
+            <Heading as="h1" fontSize={{ base: "sm", md: "md" }} textAlign="right">おかえり、{ loginUser && loginUser.name }さん</Heading>
         </>
     )
 })

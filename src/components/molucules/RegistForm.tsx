@@ -1,4 +1,4 @@
-import { Box,  Flex, FormLabel, Input, Select, Stack, Textarea, Container, Heading} from "@chakra-ui/react"
+import { Box, Flex, FormLabel, Input, Select, Stack, Textarea, Container, Heading } from "@chakra-ui/react"
 import { VFC, memo, useState, ChangeEvent, useEffect, ReactNode } from "react"
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,7 +8,7 @@ import { SaveButton } from "../atoms/button/SaveButton";
 import { homeForm } from "../../type/api/homeForm"
 registerLocale('ja', ja)
 
-type Props ={
+type Props = {
     categoryArry: never[],
     balanceFlg: number,
     saveAction: (form: homeForm) => void,
@@ -17,7 +17,7 @@ type Props ={
 }
 
 export const RegistForm: VFC<Props> = memo((props) => {
-    const {categoryArry,  balanceFlg ,saveAction , fixFlg , children } = props;
+    const { categoryArry, balanceFlg, saveAction, fixFlg, children } = props;
     const today = new Date();
     const [category, settCategory] = useState('')
     const [amount, setAmount] = useState('');
@@ -26,7 +26,7 @@ export const RegistForm: VFC<Props> = memo((props) => {
     const [remarks, setRemarks] = useState('')
 
     const onChangeAmount = (e: ChangeEvent<HTMLInputElement>) => {
-        if(e.target.value !== ""){
+        if (e.target.value !== "") {
             setAmount(e.target.value)
             setAmountString(e.target.valueAsNumber.toLocaleString())
         } else {
@@ -36,29 +36,28 @@ export const RegistForm: VFC<Props> = memo((props) => {
     }
     const onChangeCategory = (e: ChangeEvent<HTMLSelectElement>) => settCategory(e.target.value);
     const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setRemarks(event.target.value);
-    
-    const saveForm: homeForm = { categoryCode: category,  balanceFlg , date: date.toLocaleDateString('en-ZA').substring(0,10) ,  amount,  remarks , fixFlg}
+
     const onClickSaveButton = () => {
+        const saveForm: homeForm = { categoryCode: category, balanceFlg, date: date.toLocaleDateString('en-ZA').substring(0, 10), amount, remarks, fixFlg }
         saveAction(saveForm);
     }
 
-    useEffect(() =>{
-        // balanceFlg === 0 ? setTitle('収入') :  setTitle('支出')
+    useEffect(() => {
         setAmount("")
         setAmountString("0")
-    },[])
-    
+    }, [])
+
 
     return (
         <Stack spacing={4} px={10} py={3}>
             <Container maxW="600px">
-            <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">{children}入力</Heading>
+                <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">{children}入力</Heading>
                 <FormLabel>カテゴリー</FormLabel>
                 <Select placeholder='選択してください' onChange={onChangeCategory} >
                     {categoryArry.map((key) => {
                         return <option key={key['id']} value={key['id']} >{key['categoryName']}</option>
                     })}
-                </Select> 
+                </Select>
                 <FormLabel htmlFor="date">年月日</FormLabel>
                 <DatePicker id="date" dateFormat="yyyy/MM/dd" selected={date} onChange={selectedDate => { setDate(selectedDate || today) }} locale={ja} />
                 <FormLabel htmlFor="amount">金額({amountString}円)</FormLabel>

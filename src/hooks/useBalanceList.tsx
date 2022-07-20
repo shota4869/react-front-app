@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useMessage } from "./useMessage";
 
 const Balance_API_BASE_URL = "http://localhost:8080/api/balance-list";
@@ -8,7 +8,7 @@ const Balance_API_BASE_URL = "http://localhost:8080/api/balance-list";
 
 export const useBalanceList = () => {
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const { showMessage } = useMessage();
 
     const [incomeList, setIncomeList] = useState([]);
@@ -19,6 +19,7 @@ export const useBalanceList = () => {
         axios.post(Balance_API_BASE_URL,requestJson,{withCredentials: true,headers: {'Content-Type': 'application/json'}})
         .then((res) =>{
 
+            console.log(requestJson)
             setIncomeList(res.data.incomeList);
             setExpenditureList(res.data.expenditureList);
 
@@ -27,25 +28,40 @@ export const useBalanceList = () => {
         })
         .catch((err) => {
 
-            // //リダイレクト
+            //リダイレクト
+            navigate("/login")
 
         });
 
-    },[])
+    },[navigate])
+    
+    const updateAction = useCallback((fixFlg: string) => {
 
-    const deleteAction = useCallback((id: String,req: string) => {
+        axios.post(Balance_API_BASE_URL + "/update", fixFlg, { withCredentials: true ,headers: {'Content-Type': 'application/json'}})
+            .then((res) => {
+            })
+            .catch((err) => {
+            });
+
+    }, [])
+
+    const deleteAction = useCallback((id: String,req: string,fixFlg:string) => {
 
         axios.delete(Balance_API_BASE_URL +"/"+ id,  { withCredentials: true ,headers: {'Content-Type': 'application/json'}})
             .then((res) => {
                 showMessage({ title: "削除しました。", status: "success" })
                 getBalanceList(req);
+                updateAction(fixFlg);
+                
             })
             .catch((err) => {
                 alert("削除に失敗しました。")
 
             });
 
-    }, [showMessage,getBalanceList])
+    }, [showMessage,getBalanceList,updateAction])
 
-    return { getBalanceList ,incomeList ,expenditureList ,deleteAction}
+    
+
+    return { getBalanceList ,incomeList ,expenditureList ,deleteAction,updateAction}
 }

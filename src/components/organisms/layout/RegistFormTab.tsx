@@ -14,7 +14,7 @@ type Props ={
 }
 
 export const RegistFormTab: VFC <Props> = (props) => {
-    const {  saveAction ,headerWord ,index ,fixFlg} = props;
+    const {  saveAction ,headerWord ,index,fixFlg} = props;
 
     const { incomeCategory } = useContext(IncomeCategoryListContext);
     const { expenditureCategory } = useContext(ExpenditureCategoryListContext);

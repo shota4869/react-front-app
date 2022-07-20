@@ -18,20 +18,21 @@ export const Calender: VFC<Props> = (props) => {
     const [ monthYear, setMonthYear ] = useState("");
 
     const onCLickDate = (arg: DateClickArg) => {
-        navigate("/balance-list", { state: { date: arg.dateStr as string }, replace: false })
+        navigate("/balance-list", { state: { date: arg.dateStr as string , monthFlg: "0" as string}, replace: false })
     }
 
     const eventClick = (e: EventClickArg) => {
         console.log(e.event.startStr)
+        navigate("/balance-list", { state: { date: e.event.startStr as string, monthFlg: "0" as string}, replace: false })
     }
 
 
-    const dateClickHandler = (month: string) => {
+    const customButtonClickHandler = (month: string) => {
 
-        navigate("/balance-list", { state: { date: month as string }, replace: false })
+        navigate("/balance-list", { state: { date: "",month: month as string , monthFlg: "1" as string}, replace: false })
   
     }
-    console.log("hi")
+
     return (
         <FullCalendar plugins={[dayGridPlugin, interactionPlugin]} height="600px"
             dateClick={onCLickDate}
@@ -48,7 +49,7 @@ export const Calender: VFC<Props> = (props) => {
                     text: '月の収支',
                     click: () => {
 
-                        dateClickHandler(monthYear);
+                        customButtonClickHandler(monthYear);
                     },
                 },
             }}

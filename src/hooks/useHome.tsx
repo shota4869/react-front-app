@@ -17,8 +17,10 @@ export const useHome = () => {
 
 
     const navigate = useNavigate();
-    const [saveAmount, setSaveAmount] = useState(0);
     const [usableAmount, setUsableAmount] = useState(0);
+    const [balanceAmount, setBalanceAmount] = useState(0);
+    const [restUsableAmount, setRestUsableAmount] = useState(0);
+
 
 
     const init = useCallback(() => {
@@ -26,8 +28,10 @@ export const useHome = () => {
             .then(res => {
                 setIncomeCategory(res.data.incomeCategory)
                 setExpenditureCategory(res.data.expenditureCategory)
-                setSaveAmount(res.data.saveAmount)
                 setUsableAmount(res.data.usableAmount)
+                setBalanceAmount(res.data.balanceAmount)
+                setRestUsableAmount(res.data.restUsableAmount)
+
             })
             .catch(err => {
                 navigate("/login")
@@ -56,12 +60,13 @@ export const useHome = () => {
             .then((res) => {
                 console.log(res.data)
                 showMessage({ title: "保存しました。", status: "success" })
-                setUsableAmount(res.data)
+                setRestUsableAmount(res.data.restAmount)
+                setBalanceAmount(res.data.balanceAmount)
             })
             .catch(() => {
                 showMessage({ title: "保存に失敗しました。", status: "error" })
             });
     }, [showMessage])
 
-    return { saveAmount, init, saveAction ,usableAmount}
+    return {init, saveAction ,usableAmount ,balanceAmount,restUsableAmount}
 }
