@@ -20,7 +20,7 @@ export const RegistFormTab: VFC <Props> = (props) => {
     const { expenditureCategory } = useContext(ExpenditureCategoryListContext);
 
     return (
-        <Tabs isFitted isManual variant='enclosed'  defaultIndex={index}>
+        <Tabs size={"sm"} isFitted isManual variant='enclosed'  defaultIndex={index}>
             <TabList>
                 <Tab>支出</Tab>
                 <Tab>収入</Tab>

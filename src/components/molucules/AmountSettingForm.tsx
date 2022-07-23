@@ -47,8 +47,8 @@ export const AmountSettingForm: VFC<Props> = memo((props) => {
     return (
         <>
             <Stack spacing={4} px={10} py={3}>
-                <FormLabel htmlFor="amount">目標貯金額({goalAmountString}円)</FormLabel>
-                <Input id="amount" placeholder="" value={goalAmount} onChange={onChangeAmount} type="number" />
+                <FormLabel htmlFor="amount" fontSize={{ base: "xs", md: "sm" }}>目標貯金額({goalAmountString}円)</FormLabel>
+                <Input id="amount" placeholder="" value={goalAmount} onChange={onChangeAmount} type="number" size={"sm"} fontSize={{ base: "xs", md: "sm" }} />
                 <Flex justify="center" >
                     <Box py={4}>
                         <SaveButton onClick={onClickSetting}>設定</SaveButton>

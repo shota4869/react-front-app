@@ -12,7 +12,7 @@ export const RegistUser = memo(() => {
     const [repassword, setRePassword] = useState('');
 
 
-    const user = JSON.stringify({'username': username, 'email': email, 'password': password })
+    const user = {'username': username, 'email': email, 'password': password ,'repassword': repassword}
     
 
     const navigate = useNavigate();
@@ -28,24 +28,9 @@ export const RegistUser = memo(() => {
     const onClickRegistButton = () => {
 
 
-        if(username === ""){
-            alert("名前を入力してください")
-            return
-        }
-        if(email === ""){
-            alert("メールアドレスを入力してください")
-            return
-        }
-        if(password === ""){
-            alert("パスワードを入力してください")
-            return
-        }
-        if(password !== repassword){
-            alert("パスワードが正しくありません")
-            return
-        }
+       
         
-        registUser(user, navigate);
+        registUser(user);
     }
 
     const onClickReturn = () => {

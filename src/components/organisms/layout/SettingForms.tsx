@@ -29,7 +29,7 @@ export const SettingForms: VFC<Props> = memo((props) => {
                 <AccordionItem>
                     <h2>
                         <AccordionButton>
-                            <Box flex='1' textAlign='left'>
+                            <Box flex='1' textAlign='left' fontSize={{ base: "xs", md: "sm" }}>
                                 今月({date.toLocaleDateString().substring(0, 6)})の目標貯金額設定
                             </Box>
                             <AccordionIcon />
@@ -42,22 +42,22 @@ export const SettingForms: VFC<Props> = memo((props) => {
                 <AccordionItem>
                     <h2>
                         <AccordionButton>
-                            <Box flex='1' textAlign='left'>
+                            <Box flex='1' textAlign='left' fontSize={{ base: "xs", md: "sm" }}>
                                 今月({date.toLocaleDateString().substring(0, 6)})の固定収支設定
                             </Box>
                             <AccordionIcon />
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        <Heading as="h1" fontSize={{ base: "sm", md: "md" }} textAlign="center">固定収入合計：{incomeAmount.toLocaleString()}円</Heading>
-                        <Heading as="h1" fontSize={{ base: "sm", md: "md" }} textAlign="center">固定支出合計：{expenditureAmount.toLocaleString()}円</Heading>
+                        <Heading as="h1" fontSize={{ base: "xs", md: "sm" }} textAlign="center">固定収入合計：{incomeAmount.toLocaleString()}円</Heading>
+                        <Heading as="h1" fontSize={{ base: "xs", md: "sm" }} textAlign="center">固定支出合計：{expenditureAmount.toLocaleString()}円</Heading>
                         <RegistFormTab saveAction={saveBalanceAction} headerWord={"固定"} index={1} fixFlg={"1"} />
                     </AccordionPanel>
                 </AccordionItem>
                 <AccordionItem>
                     <h2>
                         <AccordionButton>
-                            <Box flex='1' textAlign='left'>
+                            <Box flex='1' textAlign='left' fontSize={{ base: "xs", md: "sm" }}>
                                 ライン通知設定
                             </Box>
                             <AccordionIcon />

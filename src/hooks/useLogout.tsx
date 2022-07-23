@@ -1,12 +1,16 @@
 import axios from "axios";
 import { useCallback } from "react";
-import { NavigateFunction } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useMessage } from "./useMessage";
 
 const LOGIN_API_BASE_URL = "http://localhost:8080/logout";
 
 export const useLogout = () => {
 
-    const logout = useCallback((navigate: NavigateFunction) =>{
+    const { showMessage } = useMessage();
+    const navigate = useNavigate();
+
+    const logout = useCallback(() =>{
 
         axios.get(LOGIN_API_BASE_URL,{withCredentials:true})
         .then(() =>{
@@ -15,10 +19,10 @@ export const useLogout = () => {
 
         })
         .catch((err) => {
-            alert(err)
+            showMessage({ title: "管理者に問い合わせて下さい。", status: "error" })
         });
 
-    },[])
+    },[showMessage,navigate])
 
     return {logout };
 }

@@ -1,23 +1,26 @@
 import { memo, useCallback, useContext, VFC } from "react"
-import { Box, Flex, Heading, Link} from "@chakra-ui/react"
+import { Box, Flex, Heading, Link, useDisclosure } from "@chakra-ui/react"
 
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "../../../hooks/useLogout";
 import { LoginUserContext } from "../../../providers/LoginUserProvider";
+import { MenueDrawer } from "../../molucules/MenueDrawer";
+import { MenueIconButton } from "../../atoms/button/MenueIconButton";
 
 
 
 export const Header: VFC = memo(() => {
 
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const { logout } = useLogout();
 
     const navigate = useNavigate();
 
     const onClickHome = useCallback(() => navigate("/home"), [navigate]);
-    const onClickUsermanagement = useCallback(() => navigate("/setting"), [navigate]);
+    const onClickUserSetting = useCallback(() => navigate("/setting"), [navigate]);
     const onClickCalender = useCallback(() => navigate("/calender"), [navigate]);
     const onClickLogout = () => {
-        logout(navigate)
+        logout()
     };
     const { loginUser } = useContext(LoginUserContext);
 
@@ -33,7 +36,7 @@ export const Header: VFC = memo(() => {
                         <Link onClick={onClickCalender}>カレンダー</Link>
                     </Box>
                     <Box pr={4}>
-                        <Link onClick={onClickUsermanagement}>設定</Link>
+                        <Link onClick={onClickUserSetting}>設定</Link>
                     </Box>
                 </Flex>
                 <Flex display={{ base: "none", md: "flex" }}>
@@ -41,8 +44,17 @@ export const Header: VFC = memo(() => {
                         <Link onClick={onClickLogout}>ログアウト</Link>
                     </Box>
                 </Flex>
+                <MenueIconButton onOpen={onOpen} />
             </Flex>
-            <Heading as="h1" fontSize={{ base: "sm", md: "md" }} textAlign="right">おかえり、{ loginUser && loginUser.name }さん</Heading>
+            <MenueDrawer
+                isOpen={isOpen}
+                onClose={onClose}
+                onClickHome={onClickHome}
+                onClickCalendar={onClickCalender}
+                onClickUserSetting={onClickUserSetting}
+                onClickLogout={onClickLogout}
+            />
+            <Heading as="h1" fontSize={{ base: "xs", md: "sm" }} textAlign="right">おかえり、{loginUser && loginUser.name}さん</Heading>
         </>
     )
 })

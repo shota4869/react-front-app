@@ -18,32 +18,30 @@ export const useBalanceList = () => {
 
         axios.post(Balance_API_BASE_URL,requestJson,{withCredentials: true,headers: {'Content-Type': 'application/json'}})
         .then((res) =>{
-
-            console.log(requestJson)
             setIncomeList(res.data.incomeList);
             setExpenditureList(res.data.expenditureList);
-
-            console.log(res.data)
-            
         })
         .catch((err) => {
 
+            showMessage({ title: "管理者に問い合わせてください。", status: "error" })
             //リダイレクト
             navigate("/login")
 
         });
 
-    },[navigate])
-    
-    const updateAction = useCallback((fixFlg: string) => {
+    },[showMessage,navigate])
+
+    const calculateAction = useCallback((fixFlg: string) => {
 
         axios.post(Balance_API_BASE_URL + "/update", fixFlg, { withCredentials: true ,headers: {'Content-Type': 'application/json'}})
             .then((res) => {
+                
             })
             .catch((err) => {
+                showMessage({ title: "管理者に問い合わせてください。", status: "error" })
             });
 
-    }, [])
+    }, [showMessage])
 
     const deleteAction = useCallback((id: String,req: string,fixFlg:string) => {
 
@@ -51,17 +49,15 @@ export const useBalanceList = () => {
             .then((res) => {
                 showMessage({ title: "削除しました。", status: "success" })
                 getBalanceList(req);
-                updateAction(fixFlg);
-                
+                calculateAction(fixFlg);
             })
             .catch((err) => {
-                alert("削除に失敗しました。")
-
+                showMessage({ title: "削除に失敗しました。", status: "error" })
             });
 
-    }, [showMessage,getBalanceList,updateAction])
+    }, [showMessage,getBalanceList,calculateAction])
 
     
 
-    return { getBalanceList ,incomeList ,expenditureList ,deleteAction,updateAction}
+    return { getBalanceList ,incomeList ,expenditureList ,deleteAction,calculateAction}
 }

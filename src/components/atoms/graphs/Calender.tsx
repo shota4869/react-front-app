@@ -4,7 +4,7 @@ import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import { useNavigate } from "react-router-dom";
 import jaLocale from '@fullcalendar/core/locales/ja';
 import { useState, VFC } from "react";
-
+import "../../styles/calendar.css"
 
 type Props = {
     calenderList: never[]
@@ -22,7 +22,6 @@ export const Calender: VFC<Props> = (props) => {
     }
 
     const eventClick = (e: EventClickArg) => {
-        console.log(e.event.startStr)
         navigate("/balance-list", { state: { date: e.event.startStr as string, monthFlg: "0" as string}, replace: false })
     }
 
@@ -34,7 +33,7 @@ export const Calender: VFC<Props> = (props) => {
     }
 
     return (
-        <FullCalendar plugins={[dayGridPlugin, interactionPlugin]} height="600px"
+        <FullCalendar plugins={[dayGridPlugin, interactionPlugin]} height="500px"
             dateClick={onCLickDate}
             initialView="dayGridMonth"
             locales={[jaLocale]}
@@ -43,7 +42,6 @@ export const Calender: VFC<Props> = (props) => {
                 console.log(dateInfo.view.title) //start of the range the calendar date
             }}
             customButtons={{
-
                 myCustomButton: {
 
                     text: '月の収支',

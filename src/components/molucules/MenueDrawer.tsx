@@ -5,12 +5,15 @@ type Props = {
     isOpen: boolean;
     onClose: () => void;
     onClickHome: () => void;
-    onClickUsermanagement:() => void;
-    onClickSetting:() => void;
+    onClickUserSetting:() => void;
+    onClickCalendar:() => void;
+    onClickLogout: () => void;
 }
 
 export const MenueDrawer: VFC<Props> = memo((props) => {
-    const { isOpen, onClose,onClickHome, onClickUsermanagement,onClickSetting} = props;
+    const { isOpen, onClose,onClickHome, onClickUserSetting,onClickCalendar,onClickLogout} = props;
+
+
     return (
         <>
             <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen} >
@@ -18,8 +21,9 @@ export const MenueDrawer: VFC<Props> = memo((props) => {
                     <DrawerContent>
                         <DrawerBody p={0} bg="gray.100">
                             <Button w="100%" onClick={onClickHome}>TOP</Button>
-                            <Button w="100%" onClick={onClickUsermanagement}>年間貯金額</Button>
-                            <Button w="100%" onClick={onClickSetting}>本日収支一覧</Button>
+                            <Button w="100%" onClick={onClickCalendar}>カレンダー</Button>
+                            <Button w="100%" onClick={onClickUserSetting}>設定</Button>
+                            <Button w="100%" onClick={onClickLogout}>ログアウト</Button>
                         </DrawerBody>
                     </DrawerContent>
                 </DrawerOverlay>

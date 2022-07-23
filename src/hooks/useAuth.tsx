@@ -22,10 +22,10 @@ export const useAuth = () => {
             setLoginUser(res.data.userDetails);
 
         }).catch((err) => {
-
+            showMessage({ title: "ログイン情報の取得に失敗しました。", status: "error" })
         })
 
-    },[setLoginUser])
+    },[showMessage,setLoginUser])
 
     const login = useCallback((login: String, navigate: NavigateFunction) =>{
 
@@ -34,7 +34,6 @@ export const useAuth = () => {
 
             console.log(res)
             showMessage({ title: "ログインしました", status: "success" })
-            //TODO：ログイン状態のフラグをグローバル変数として設定するべきか
             navigate("/home")
             getAuth();
         })

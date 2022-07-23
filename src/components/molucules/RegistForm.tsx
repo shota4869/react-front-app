@@ -51,19 +51,19 @@ export const RegistForm: VFC<Props> = memo((props) => {
     return (
         <Stack spacing={4} px={10} py={3}>
             <Container maxW="600px">
-                <Heading as="h1" fontSize={{ base: "md", md: "lg" }} textAlign="center">{children}入力</Heading>
-                <FormLabel>カテゴリー</FormLabel>
-                <Select placeholder='選択してください' onChange={onChangeCategory} >
+                <Heading as="h1" fontSize={{ base: "xs", md: "sm" }} textAlign="center">{children}入力</Heading>
+                <FormLabel fontSize={{ base: "xs", md: "sm" }}>カテゴリー</FormLabel>
+                <Select placeholder='選択してください' onChange={onChangeCategory} size={"sm"} fontSize={{ base: "xs", md: "sm" }}>
                     {categoryArry.map((key) => {
                         return <option key={key['id']} value={key['id']} >{key['categoryName']}</option>
                     })}
                 </Select>
-                <FormLabel htmlFor="date">年月日</FormLabel>
+                <FormLabel htmlFor="date" fontSize={{ base: "xs", md: "sm" }}>年月日</FormLabel>
                 <DatePicker id="date" dateFormat="yyyy/MM/dd" selected={date} onChange={selectedDate => { setDate(selectedDate || today) }} locale={ja} />
-                <FormLabel htmlFor="amount">金額({amountString}円)</FormLabel>
-                <Input id="amount" placeholder="" value={amount} onChange={onChangeAmount} type="number" />
-                <FormLabel>備考</FormLabel>
-                <Textarea placeholder="" value={remarks} onChange={handleInputChange} maxLength={500} />
+                <FormLabel htmlFor="amount" fontSize={{ base: "xs", md: "sm" }}>金額({amountString}円)</FormLabel>
+                <Input id="amount" placeholder="" value={amount} onChange={onChangeAmount} type="number" size={"sm"} fontSize={{ base: "xs", md: "sm" }}/>
+                <FormLabel fontSize={{ base: "xs", md: "sm" }}>備考</FormLabel>
+                <Textarea placeholder="" value={remarks} onChange={handleInputChange} maxLength={500} size={"sm"} fontSize={{ base: "xs", md: "sm" }}/>
                 <Flex justify="center" >
                     <Box py={4}>
                         <SaveButton onClick={onClickSaveButton}>保存</SaveButton>

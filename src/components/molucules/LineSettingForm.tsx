@@ -40,10 +40,10 @@ export const LineSettingForm: VFC<Props> = memo((props) => {
     return (
         <>
             <Stack spacing={4} px={10} py={3}>
-                <FormLabel htmlFor='email-alerts' mb='0'>ライン連携有無</FormLabel>
-                <Switch id='email-alerts' isChecked={lineFlg} onChange={onChangeLineFlg} />
-                <FormLabel htmlFor="token">アクセストークン</FormLabel>
-                <Input id="token" placeholder="" value={accessToken} onChange={onChangeAccessToken} disabled={!lineFlg} />
+                <FormLabel htmlFor='email-alerts' mb='0' fontSize={{ base: "xs", md: "sm" }}>ライン連携有無</FormLabel>
+                <Switch id='email-alerts' isChecked={lineFlg} onChange={onChangeLineFlg} size={"sm"} />
+                <FormLabel htmlFor="token" fontSize={{ base: "xs", md: "sm" }}>アクセストークン</FormLabel>
+                <Input id="token" placeholder="" value={accessToken} onChange={onChangeAccessToken} disabled={!lineFlg} size={"sm"} fontSize={{ base: "xs", md: "sm" }}/>
                 <Flex justify="center" >
                     <Box py={4}>
                         <SaveButton onClick={onClickSetting}>設定</SaveButton>

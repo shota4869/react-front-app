@@ -15,17 +15,14 @@ export const useHome = () => {
     const { setIncomeCategory } = useContext(IncomeCategoryListContext);
     const { setExpenditureCategory } = useContext(ExpenditureCategoryListContext);
 
-
     const navigate = useNavigate();
     const [usableAmount, setUsableAmount] = useState(0);
     const [balanceAmount, setBalanceAmount] = useState(0);
     const [restUsableAmount, setRestUsableAmount] = useState(0);
 
-
-
     const init = useCallback(() => {
         axios.get(HOME_API_BASE_URL, { withCredentials: true })
-            .then(res => {
+            .then((res) => {
                 setIncomeCategory(res.data.incomeCategory)
                 setExpenditureCategory(res.data.expenditureCategory)
                 setUsableAmount(res.data.usableAmount)
@@ -33,10 +30,12 @@ export const useHome = () => {
                 setRestUsableAmount(res.data.restUsableAmount)
 
             })
-            .catch(err => {
+            .catch((err) => {
+                showMessage({ title: "管理者に問い合わせて下さい。", status: "error" })
+                //リダイレクト
                 navigate("/login")
             })
-    }, [navigate,setIncomeCategory,setExpenditureCategory])
+    }, [showMessage,navigate, setIncomeCategory, setExpenditureCategory])
 
     const saveAction = useCallback((form: homeForm) => {
 
@@ -52,13 +51,10 @@ export const useHome = () => {
             alert("金額を入力してください")
             return
         }
-
         const requestForm = JSON.stringify(form);
-        console.log(requestForm)
 
         axios.post(HOME_API_BASE_URL + "/save", requestForm, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
             .then((res) => {
-                console.log(res.data)
                 showMessage({ title: "保存しました。", status: "success" })
                 setRestUsableAmount(res.data.restAmount)
                 setBalanceAmount(res.data.balanceAmount)
@@ -68,5 +64,5 @@ export const useHome = () => {
             });
     }, [showMessage])
 
-    return {init, saveAction ,usableAmount ,balanceAmount,restUsableAmount}
+    return { init, saveAction, usableAmount, balanceAmount, restUsableAmount }
 }
