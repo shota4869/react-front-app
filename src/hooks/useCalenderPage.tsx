@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMessage } from "./useMessage";
 
-const CALENDER_API_BASE_URL = "http://localhost:8080/api/home/calender";
+const CALENDER_API_BASE_URL = "http://localhost:8080/springboot-rest-api/api/home/calender";
 
 export const useCalenderPage = () => {
 
@@ -22,9 +22,9 @@ export const useCalenderPage = () => {
         })
         .catch((err) => {
             console.log(err.response.status);
-            showMessage({ title: "管理者に問い合わせて下さい。", status: "error" })
+            showMessage({ title: "再度ログインしてください", status: "error" })
             //リダイレクト
-            navigate("/login")
+            navigate("/")
         });
 
     },[showMessage,navigate])

@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMessage } from "./useMessage";
 
-const LOGIN_API_BASE_URL = "http://localhost:8080/logout";
+const LOGIN_API_BASE_URL = "http://localhost:8080/springboot-rest-api/logout";
 
 export const useLogout = () => {
 
@@ -15,7 +15,7 @@ export const useLogout = () => {
         axios.get(LOGIN_API_BASE_URL,{withCredentials:true})
         .then(() =>{
 
-            navigate("/login")
+            navigate("/")
 
         })
         .catch((err) => {

@@ -7,7 +7,7 @@ import { useMessage } from "./useMessage";
 import { homeForm } from "../type/api/homeForm";
 
 
-const HOME_API_BASE_URL = "http://localhost:8080/api/setting";
+const HOME_API_BASE_URL = "http://localhost:8080/springboot-rest-api/api/setting";
 
 export const useSetting = () => {
     const navigate = useNavigate();
@@ -28,9 +28,9 @@ export const useSetting = () => {
                 setExpenditureAmount(res.data.fixExpenditureAmount);
             })
             .catch((err) => {
-                showMessage({ title: "管理者に問い合わせて下さい。", status: "error" })
+                showMessage({ title: "再度ログインしてください", status: "error" })
 
-                navigate("/login")
+                navigate("/")
             });
 
     }, [navigate, showMessage])

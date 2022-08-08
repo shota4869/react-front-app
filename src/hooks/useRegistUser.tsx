@@ -37,7 +37,7 @@ export const useRegistUser = () => {
     axios.post(LOGIN_API_BASE_URL, requestForm, { headers: { 'Content-Type': 'application/json' } })
       .then(() => {
 
-        navigate("/login")
+        navigate("/")
       })
       .catch((error) => {
         console.log(error)

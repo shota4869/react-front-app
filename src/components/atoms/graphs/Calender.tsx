@@ -39,7 +39,6 @@ export const Calender: VFC<Props> = (props) => {
             locales={[jaLocale]}
             datesSet={(dateInfo) => {
                 setMonthYear(dateInfo.view.title)
-                console.log(dateInfo.view.title) //start of the range the calendar date
             }}
             customButtons={{
                 myCustomButton: {

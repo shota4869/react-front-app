@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMessage } from "./useMessage";
 
-const Balance_API_BASE_URL = "http://localhost:8080/api/balance-list";
+const Balance_API_BASE_URL = "http://localhost:8080/springboot-rest-api/api/balance-list";
 
 
 export const useBalanceList = () => {
@@ -23,9 +23,9 @@ export const useBalanceList = () => {
         })
         .catch((err) => {
 
-            showMessage({ title: "管理者に問い合わせてください。", status: "error" })
+            showMessage({ title: "再度ログインしてください", status: "error" })
             //リダイレクト
-            navigate("/login")
+            navigate("/")
 
         });
 
