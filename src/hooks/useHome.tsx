@@ -6,7 +6,7 @@ import { IncomeCategoryListContext } from "../providers/IncomeCategoryListProvid
 import { homeForm } from "../type/api/homeForm";
 import { useMessage } from "./useMessage";
 
-const HOME_API_BASE_URL = "http://localhost:8080/springboot-rest-api/api/home";
+const HOME_API_BASE_URL = "springboot-rest-api/api/home";
 
 export const useHome = () => {
 

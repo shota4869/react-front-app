@@ -34,7 +34,7 @@ export const RegistUser = memo(() => {
     }
 
     const onClickReturn = () => {
-        navigate("/login")
+        navigate("/")
     }
 
 

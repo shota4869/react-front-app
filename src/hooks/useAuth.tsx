@@ -4,8 +4,8 @@ import { NavigateFunction } from "react-router-dom";
 import { LoginUserContext } from "../providers/LoginUserProvider";
 import { useMessage } from "./useMessage";
 
-const LOGIN_API_BASE_URL = "http://localhost:8080/springboot-rest-api/login";
-const LOGIN_API_GET_BASE_URL = "http://localhost:8080/springboot-rest-api/api/login";
+const LOGIN_API_BASE_URL = "springboot-rest-api/login";
+const LOGIN_API_GET_BASE_URL = "springboot-rest-api/api/login";
 
 
 export const useAuth = () => {

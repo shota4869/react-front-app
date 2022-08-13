@@ -7,7 +7,7 @@ import { useMessage } from "./useMessage";
 import { homeForm } from "../type/api/homeForm";
 
 
-const HOME_API_BASE_URL = "http://localhost:8080/springboot-rest-api/api/setting";
+const HOME_API_BASE_URL = "springboot-rest-api/api/setting";
 
 export const useSetting = () => {
     const navigate = useNavigate();

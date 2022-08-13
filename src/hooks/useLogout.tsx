@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMessage } from "./useMessage";
 
-const LOGIN_API_BASE_URL = "http://localhost:8080/springboot-rest-api/logout";
+const LOGIN_API_BASE_URL = "springboot-rest-api/logout";
 
 export const useLogout = () => {
 
