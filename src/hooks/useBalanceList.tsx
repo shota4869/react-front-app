@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMessage } from "./useMessage";
 
-const Balance_API_BASE_URL = "springboot-rest-api/api/balance-list";
+const Balance_API_BASE_URL = "api/balance-list";
 
 
 export const useBalanceList = () => {

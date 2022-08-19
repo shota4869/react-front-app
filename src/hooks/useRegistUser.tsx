@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { registUser } from "../type/api/registUser"
 import { useMessage } from "./useMessage";
 
-const LOGIN_API_BASE_URL = "springboot-rest-api/api/user/regist-user";
+const LOGIN_API_BASE_URL = "api/user/regist-user";
 
 
 export const useRegistUser = () => {

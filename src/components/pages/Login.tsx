@@ -14,7 +14,7 @@ export const Login: VFC = memo(() => {
     const { login } = useAuth();
 
     const onClickLoginButton = () => {
-        login(loginData, navigate);
+        login(loginData);
     }
 
     const onClickRegistUser = () => {

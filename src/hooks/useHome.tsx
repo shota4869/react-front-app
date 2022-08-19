@@ -6,7 +6,7 @@ import { IncomeCategoryListContext } from "../providers/IncomeCategoryListProvid
 import { homeForm } from "../type/api/homeForm";
 import { useMessage } from "./useMessage";
 
-const HOME_API_BASE_URL = "springboot-rest-api/api/home";
+const HOME_API_BASE_URL = "api/home";
 
 export const useHome = () => {
 
@@ -40,15 +40,15 @@ export const useHome = () => {
     const saveAction = useCallback((form: homeForm) => {
 
         if (form.categoryCode === "") {
-            alert("カテゴリーを選択してください")
+            showMessage({ title: "カテゴリーを選んでください", status: "warning" })
             return
         }
         if (form.date === null) {
-            alert("日付を入力してください")
+            showMessage({ title: "日付を入力してください", status: "warning" })
             return
         }
         if (form.amount === "") {
-            alert("金額を入力してください")
+            showMessage({ title: "金額を入力してください", status: "warning" })
             return
         }
         const requestForm = JSON.stringify(form);
