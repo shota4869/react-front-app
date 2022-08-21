@@ -55,7 +55,7 @@ export const RegistForm: VFC<Props> = memo((props) => {
                 <FormLabel fontSize={{ base: "xs", md: "sm" }}>カテゴリー</FormLabel>
                 <Select placeholder='選択してください' onChange={onChangeCategory} size={"sm"} fontSize={{ base: "xs", md: "sm" }}>
                     {categoryArry.map((key) => {
-                        return <option key={key['id']} value={key['id']} >{key['categoryName']}</option>
+                        return <option key={key['id']} value={key['categoryCode']} >{key['categoryName']}</option>
                     })}
                 </Select>
                 <FormLabel htmlFor="date" fontSize={{ base: "xs", md: "sm" }}>年月日</FormLabel>
