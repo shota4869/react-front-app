@@ -18,7 +18,7 @@ export const LineSettingForm: VFC<Props> = memo((props) => {
     const onChangeAccessToken = (e: ChangeEvent<HTMLInputElement>) => setAccessToken(e.target.value);
     const onChangeLineFlg = () => setLineFlg(!lineFlg);
 
-    const { saveLineAction } = useSetting();
+    const { saveLineAction ,testConnecting} = useSetting();
     const requestForm = {"accessToken": accessToken,"lineFlg": lineFlg ? "1" :"0"}
     
     useEffect(() => {
@@ -37,6 +37,10 @@ export const LineSettingForm: VFC<Props> = memo((props) => {
         saveLineAction(requestForm)
     }
 
+    const onClickTestConnecting = () =>{
+        testConnecting(requestForm);
+    }
+
     return (
         <>
             <Stack spacing={4} px={10} py={3}>
@@ -47,6 +51,9 @@ export const LineSettingForm: VFC<Props> = memo((props) => {
                 <Flex justify="center" >
                     <Box py={4}>
                         <SaveButton onClick={onClickSetting}>設定</SaveButton>
+                    </Box>
+                    <Box py={4} px={3} >
+                        <SaveButton onClick={onClickTestConnecting}>テスト接続</SaveButton>
                     </Box>
                 </Flex>
             </Stack>

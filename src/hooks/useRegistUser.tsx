@@ -36,25 +36,12 @@ export const useRegistUser = () => {
 
     axios.post(LOGIN_API_BASE_URL, requestForm, { headers: { 'Content-Type': 'application/json' } })
       .then(() => {
-
+        showMessage({ title: "登録しました。", status: "success" })
         navigate("/")
       })
       .catch((error) => {
-        console.log(error)
-        if (error.response) {
-          // このリクエストはステータスコードとともに作成されます
-          // 2xx系以外の時にエラーが発生します
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // このリクエストはレスポンスが返ってこない時に作成されます。
-          // `error.request`はXMLHttpRequest のインスタンスです。
-          console.log(error.request);
-        } else {
-          //それ以外で何か以上が起こった時
-          console.log('Error', error.message);
-        }
+        showMessage({ title: "他のメールアドレスを使用して下さい。", status: "error" })
+        
       });
 
   }, [navigate,showMessage])

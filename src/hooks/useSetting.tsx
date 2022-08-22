@@ -88,5 +88,19 @@ export const useSetting = () => {
 
     }, [showMessage])
 
-    return { init, saveAmountAction, saveLineAction, amountSettings, lineSettings, incomeAmount, expenditureAmount, saveBalanceAction };
+    const testConnecting = useCallback((form: Object) => {
+
+        axios.post(HOME_API_BASE_URL + "/test-connecting", form, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
+            .then((res) => {
+                showMessage({ title: "接続できました。", status: "success" })
+            })
+            .catch((err) => {
+                showMessage({ title: "接続に失敗しました。", status: "error" })
+
+
+            });
+
+    }, [showMessage])
+
+    return { init, saveAmountAction, saveLineAction, amountSettings, lineSettings, incomeAmount, expenditureAmount, saveBalanceAction,testConnecting };
 }
