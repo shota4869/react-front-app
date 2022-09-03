@@ -26,10 +26,6 @@ export const RegistUser = memo(() => {
     const onChangeRePassword = (e: ChangeEvent<HTMLInputElement>) => setRePassword(e.target.value);
 
     const onClickRegistButton = () => {
-
-
-       
-        
         registUser(user);
     }
 
@@ -45,7 +41,7 @@ export const RegistUser = memo(() => {
                 <Divider my={4} />
                 <Stack spacing={4} px={4} py={5}>
                     <Input placeholder="名前" value={username} onChange={onChangeUsername} />
-                    <Input placeholder="メールアドレス" value={email} onChange={onChangeEmail} />
+                    <Input placeholder="メールアドレス" type='email' value={email} onChange={onChangeEmail} />
                     <Input placeholder="パスワード" type={'password'} value={password} onChange={onChangePassword} />
                     <Input placeholder="確認用パスワード" type={'password'} value={repassword} onChange={onChangeRePassword} />
                     <PrimaryButton onClick={onClickRegistButton}>登録</PrimaryButton>

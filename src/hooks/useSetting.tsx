@@ -5,6 +5,8 @@ import { lineSetting } from "../type/api/lineSetting"
 import { amountSetting } from "../type/api/amountSetting"
 import { useMessage } from "./useMessage";
 import { homeForm } from "../type/api/homeForm";
+import { goalAmount } from "../type/api/goalAmount";
+import { lineForm } from "../type/api/lineForm";
 
 
 const HOME_API_BASE_URL = "api/setting";
@@ -35,7 +37,7 @@ export const useSetting = () => {
 
     }, [navigate, showMessage])
 
-    const saveAmountAction = useCallback((form: Object) => {
+    const saveAmountAction = useCallback((form: goalAmount) => {
 
         axios.post(HOME_API_BASE_URL + "/amount", form, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
             .then((res) => {
@@ -47,7 +49,7 @@ export const useSetting = () => {
 
     }, [showMessage])
 
-    const saveLineAction = useCallback((form: Object) => {
+    const saveLineAction = useCallback((form: lineForm) => {
 
         axios.post(HOME_API_BASE_URL + "/line", form, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
             .then((res) => {
@@ -88,7 +90,7 @@ export const useSetting = () => {
 
     }, [showMessage])
 
-    const testConnecting = useCallback((form: Object) => {
+    const testConnecting = useCallback((form: lineForm) => {
 
         axios.post(HOME_API_BASE_URL + "/test-connecting", form, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
             .then((res) => {

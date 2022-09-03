@@ -34,7 +34,7 @@ export const Login: VFC = memo(() => {
                 <Heading as="h1" size="lg" textAlign="center">貯金ちゃん</Heading>
                 <Divider my={4} />
                 <Stack spacing={4} px={4} py={10}>
-                    <Input placeholder="メールアドレス" value={email} onChange={onChangeEmail} />
+                    <Input placeholder="メールアドレス" type='email' value={email} onChange={onChangeEmail} />
                     <Input placeholder="パスワード" type={'password'} value={password} onChange={onChangePassword} />
                     <PrimaryButton onClick={onClickLoginButton}>ログイン</PrimaryButton>
                     <Divider my={4} />

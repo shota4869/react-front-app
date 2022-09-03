@@ -32,15 +32,11 @@ export const useAuth = () => {
 
         axios.post(LOGIN_API_BASE_URL,login,{withCredentials:true})
         .then((res) =>{
-
-            console.log(res)
             showMessage({ title: "ログインしました", status: "success" })
             getAuth();
-            
         })
         .catch((err) => {
             showMessage({ title: "ログインに失敗しました", status: "error" })
-
         });
 
     },[getAuth, showMessage])
