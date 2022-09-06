@@ -1,6 +1,7 @@
 # 貯金ちゃん
-期間限定でAWSを用いてネットにアップしておりますので、見ていただければと思います。
-（http://chokinchan.net）
+期間限定でAWSを用いてネットにアップしておりますので、見ていただければと思います。↓
+
+http://chokinchan.net
 
 # DEMO
 Demo動画↓
@@ -17,7 +18,8 @@ https://user-images.githubusercontent.com/81454257/188755706-75c6bc98-ae44-4191-
 認証機能とLineNotifyを用いてライン連携できる機能を実装しています。
 
 LineNotifyの設定方法は下記のURLから参照して、アクセストークン取得後、設定いただければ毎朝8時に通知が来るよう設定しております。
- （https://zenn.dev/protoout/articles/18-line-notify-setup）
+
+ https://zenn.dev/protoout/articles/18-line-notify-setup
  
  レスポンシブ対応しておりますので、IPhoneからでも使用できます。
  
@@ -28,9 +30,13 @@ LineNotifyの設定方法は下記のURLから参照して、アクセストー�
  - フロントエンド：React, ChakraUI
  - バックエンド：SpringBoot, Spring Security
  
- ⇨バックエンドは別のリポジトリにて管理（https://github.com/shota4869/springboot-backend）
+ ⇨バックエンドは別のリポジトリにて管理
+ 
+ https://github.com/shota4869/springboot-backend
   
-  Qiitaにもまとめています。社内で紹介用に簡単にまとめた記事なので詳細は後日記載予定です。（https://qiita.com/sho0403/items/58a6699672e9cf58f02d）
+  Qiitaにもまとめています。社内で紹介用に簡単にまとめた記事なので詳細は後日記載予定です。
+  
+  https://qiita.com/sho0403/items/58a6699672e9cf58f02d
   
 # 起動
 フロントエンド：　
