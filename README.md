@@ -29,7 +29,7 @@ LineNotifyの設定方法は下記のURLから参照して、アクセストー�
  
  ⇨バックエンドは別のリポジトリにて管理（https://github.com/shota4869/springboot-backend）
   
-  Qiitaにもまとめています。社内紹介で紹介用に簡単にまとめた記事なので詳細は後日記載予定です。（https://qiita.com/sho0403/items/58a6699672e9cf58f02d）
+  Qiitaにもまとめています。社内で紹介用に簡単にまとめた記事なので詳細は後日記載予定です。（https://qiita.com/sho0403/items/58a6699672e9cf58f02d）
   
 # 起動
 フロントエンド：　
