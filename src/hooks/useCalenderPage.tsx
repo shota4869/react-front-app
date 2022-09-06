@@ -21,7 +21,6 @@ export const useCalenderPage = () => {
             setCalenderList(res.data.calenderDtoList);
         })
         .catch((err) => {
-            console.log(err.response.status);
             showMessage({ title: "再度ログインしてください", status: "error" })
             //リダイレクト
             navigate("/")
