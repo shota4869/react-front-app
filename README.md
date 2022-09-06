@@ -13,7 +13,7 @@ https://user-images.githubusercontent.com/81454257/188755706-75c6bc98-ae44-4191-
 
 # 説明
 簡単な貯金アプリを制作しました。
-認証機能とLineNotifyを用いてライン連携できるようにしています。
+認証機能とLineNotifyを用いてライン連携できる機能を実装しています。
 
 LineNotifyの設定方法は下記のURLから参照して、アクセストークン取得後、設定いただければ毎朝8時に通知が来るよう設定しております。
  （https://zenn.dev/protoout/articles/18-line-notify-setup）
