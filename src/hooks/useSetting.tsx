@@ -9,7 +9,7 @@ import { goalAmount } from "../type/api/goalAmount";
 import { lineForm } from "../type/api/lineForm";
 
 
-const HOME_API_BASE_URL = "api/setting";
+const HOME_API_BASE_URL = "http://localhost:8080/api/setting";
 
 export const useSetting = () => {
     const navigate = useNavigate();

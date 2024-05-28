@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { LoginUserContext } from "../providers/LoginUserProvider";
 import { useMessage } from "./useMessage";
 
-const LOGIN_API_BASE_URL = "api/login";
+const LOGIN_API_BASE_URL = "http://localhost:8080/api/login";
 
 
 export const useAuth = () => {

@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMessage } from "./useMessage";
 
-const CALENDER_API_BASE_URL = "api/calender";
+const CALENDER_API_BASE_URL = "http://localhost:8080/api/calender";
 
 export const useCalenderPage = () => {
 
